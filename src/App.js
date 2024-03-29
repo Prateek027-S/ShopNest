@@ -1,19 +1,21 @@
 import React from 'react';
-import { NativeBaseProvider, Box, Text } from 'native-base';
+import {NativeBaseProvider, Box, Text} from 'native-base';
 import theme from './Theme';
-import Login from './Screens/Login';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-
+import LoginScreen from './Screens/Login/Login.screen';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
+import store from './Store';
 
 const App = () => {
-
   return (
-    <NativeBaseProvider theme={theme}>
-      <SafeAreaProvider>
-        <Login />
-      </SafeAreaProvider>
-    </NativeBaseProvider>
+    <Provider store={store}>
+      <NativeBaseProvider theme={theme}>
+        <SafeAreaProvider>
+          <LoginScreen />
+        </SafeAreaProvider>
+      </NativeBaseProvider>
+    </Provider>
   );
-}
+};
 
 export default App;
