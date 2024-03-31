@@ -1,28 +1,22 @@
 import React from 'react'
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer'
-import { drawerRoutes } from '@/Navigators/routes'
+import { drawerRoutes } from '../../routes'
 import TabNavigation from '../Tab/TabNavigation'
-import { useTranslation } from 'react-i18next'
 import { Platform, Text, TouchableOpacity, View } from 'react-native'
-import { clearAsyncStorage } from '@/Utils/services/AsyncStorage.service'
+import { removeAccessToken } from '../../../Utils/services/AsyncStorage.service'
 import { useDispatch } from 'react-redux'
-import { setAuthToken, setRefreshToken, setUser } from '@/Store/redux/Auth/Auth.slice'
 import { useTheme } from 'native-base'
-import Header from '@/Components/Layouts/Header'
-import LogoutIcon from '@/Components/UI-Kit/Icons/iconComponents/LogoutIcon'
+import { setAccessToken } from '../../../Store/redux/user/userSlice'
 
 const Drawer = createDrawerNavigator()
 
 const DrawerNavigation = () => {
   const { colors } = useTheme()
-  const { t } = useTranslation()
   const dispatch = useDispatch()
 
   const handleLogout = async () => {
-    dispatch(setAuthToken(null))
-    dispatch(setRefreshToken(null))
-    dispatch(setUser(null))
-    await clearAsyncStorage()
+    dispatch(setAccessToken(null));
+    await removeAccessToken();
   }
 
   return (
@@ -47,13 +41,10 @@ const DrawerNavigation = () => {
               <View style={{ borderBottomWidth: 1, position: 'absolute', top: '7%', width: '100%', borderBottomColor: colors.primaryBlue }} />
               <TouchableOpacity style={{ padding: 20, width: '100%' }} onPress={handleLogout}>
                 <View style={{ width: 82, flexDirection: 'row', justifyContent: 'space-between' }}>
-                  <LogoutIcon />
-                  <Text style={{ color: colors.grey900, fontSize: 14, fontWeight: '500' }}>{t('logout')}</Text>
+                  {/* <LogoutIcon /> */}
+                  <Text style={{ color: colors.grey900, fontSize: 14, fontWeight: '500' }}>Logout</Text>
                 </View>
               </TouchableOpacity>
-              <View style={{ position: 'absolute', bottom: 20, width: '100%' }} {...props}>
-                <Text style={{ color: colors.grey800, textAlign: 'center' }}>©Developed By Shubham Gupta</Text>
-              </View>
             </DrawerContentScrollView>
           )
         }}
@@ -72,19 +63,19 @@ const DrawerNavigation = () => {
             <Drawer.Screen
               key={item.routeName} name={item.routeName} component={item.component}
               options={{
-                drawerLabel: t(item.drawerLabel),
-                drawerIcon: item.optionIcon,
+                drawerLabel: item.drawerLabel,
+                //drawerIcon: item.optionIcon,
                 drawerLabelStyle: {
-                  marginLeft: -20
+                  marginLeft: 5
                 },
-                headerShown: item.headerShown,
+                /* headerShown: item.headerShown,
                 header: item.headerShown
                   ? (
                       item.header
                         ? item.header
                         : () => (<Header headerHeading={t(item.headerHeading)} />)
                     )
-                  : () => {}
+                  : () => {} */
               }}
             />
           ))

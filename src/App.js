@@ -1,20 +1,29 @@
-import React from 'react';
-import {NativeBaseProvider, Box, Text} from 'native-base';
+import 'react-native-gesture-handler';
+import React, { useEffect } from 'react';
+import {NativeBaseProvider} from 'native-base';
 import theme from './Theme';
-import LoginScreen from './Screens/Login/Login.screen';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import { Provider } from 'react-redux';
-import store from './Store';
+import { useDispatch } from 'react-redux';
+import ApplicationNavigator from './Navigators';
+import { getAccessToken } from './Utils/services/AsyncStorage.service';
+import { setAccessToken } from './Store/redux/user/userSlice';
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const initializeApp = async () => {
+      const token = await getAccessToken();
+      dispatch(setAccessToken(token));
+    };
+    initializeApp();
+  }, []);
+
   return (
-    <Provider store={store}>
       <NativeBaseProvider theme={theme}>
         <SafeAreaProvider>
-          <LoginScreen />
+          <ApplicationNavigator />
         </SafeAreaProvider>
       </NativeBaseProvider>
-    </Provider>
   );
 };
 

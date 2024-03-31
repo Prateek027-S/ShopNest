@@ -1,10 +1,8 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import { authenticatedStackNavigationRoutes } from '@/Navigators/routes';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DrawerNavigation from '../Drawer/DrawerNavigation';
-import Header from '@/Components/Layouts/Header';
 
-const Stack = createStackNavigator()
+const Stack = createNativeStackNavigator();
 
 const AuthenticatedStackNavigation = () => {
 
@@ -18,26 +16,6 @@ const AuthenticatedStackNavigation = () => {
           animationEnabled: false
         }}
       />
-      {
-        authenticatedStackNavigationRoutes.map(item => (
-          <Stack.Screen
-            key={item.routeName}
-            name={item.routeName}
-            component={item.component}
-            options={{
-              animationEnabled: false,
-              headerShown: item.headerShown,
-              header: item.headerShown
-                ? (
-                    item.header
-                      ? item.header
-                      : () => (<Header headerHeading={item.headerHeading} />)
-                  )
-                : () => {}
-            }}
-          />
-        ))
-      }
     </Stack.Navigator>
   )
 }

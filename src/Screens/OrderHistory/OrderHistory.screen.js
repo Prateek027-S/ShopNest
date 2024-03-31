@@ -1,8 +1,11 @@
-import React from 'react'
+import { Box } from 'native-base';
+import React from 'react';
 
 const OrderHistoryScreen = () => {
   return (
-    <div>Order History Screen</div>
+    <Box>
+      Order History Screen
+    </Box>
   )
 }
 

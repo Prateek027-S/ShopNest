@@ -1,11 +1,9 @@
 import React, { useEffect, useRef } from 'react'
-import { SCREEN_NAMES } from '@/Utils/constants'
+import { SCREEN_NAMES } from '../../../Utils/constants'
 import * as Animatable from 'react-native-animatable'
-import { applicationTabRoutes } from '@/Navigators/routes'
+import { applicationTabRoutes } from '../../routes'
 import { Platform, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import Header from '@/Components/Layouts/Header'
-import { useTranslation } from 'react-i18next'
 import { useTheme } from 'native-base'
 
 const Tab = createBottomTabNavigator()
@@ -14,18 +12,17 @@ const animate1 = { 0: { scale: 0.5, translateY: 0 }, 0.50: { translateY: -10 }, 
 const animate2 = { 0: { scale: 1, translateY: -10 }, 1: { scale: 1, translateY: 0 } }
 
 const TabButton = (props) => {
-  const { t } = useTranslation()
   const { item, onPress, accessibilityState } = props
   const focused = accessibilityState.selected
   const viewRef = useRef(null)
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (focused) {
       viewRef.current.animate(animate1)
     } else {
       viewRef.current.animate(animate2)
     }
-  }, [focused])
+  }, [focused]) */
 
   return (
     <TouchableOpacity
@@ -33,7 +30,7 @@ const TabButton = (props) => {
       activeOpacity={1}
       style={{ ...styles.container, paddingBottom: '3%' }}
     >
-      <Animatable.View
+      {/* <Animatable.View
         ref={viewRef}
         duration={1000}
         style={styles.container}
@@ -41,14 +38,13 @@ const TabButton = (props) => {
         {
           focused ? <item.activeIcon /> : <item.inActiveIcon />
         }
-      </Animatable.View>
-      <Text style={{ fontSize: 13 }}>{t(item.tabLabel)}</Text>
+      </Animatable.View> */}
+      <Text style={{ fontSize: 13 }}>{item.tabLabel}</Text>
     </TouchableOpacity>
   )
 }
 
 const TabNavigation = () => {
-  const { t } = useTranslation()
   const { colors } = useTheme()
 
   return (
@@ -78,14 +74,14 @@ const TabNavigation = () => {
             options={{
               tabBarShowLabel: false,
               tabBarButton: (props) => <TabButton {...props} item={item} />,
-              header: item.headerShown
+              /* header: item.headerShown
                 ? (
                     item.header
                       ? item.header
                       : () => (<Header variant='default' headerHeading={t(item.headerHeading)} />)
                   )
                 : () => {},
-              headerShown: item.headerShown
+              headerShown: item.headerShown */
             }}
           />
         ))

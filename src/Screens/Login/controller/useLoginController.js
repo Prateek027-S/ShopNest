@@ -3,9 +3,9 @@ import * as yup from 'yup';
 import {LOGIN_CREDENTIALS} from '../../../Utils/constants';
 import { Alert } from 'react-native';
 import React from 'react';
-import { login } from '../../../Store/redux/user/userSlice';
+import { login, setAccessToken } from '../../../Store/redux/user/userSlice';
 import { useDispatch } from 'react-redux';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { saveAccessToken } from '../../../Utils/services/AsyncStorage.service';
 import config from '../../../Config/app.config';
 
 
@@ -14,7 +14,8 @@ const useLoginController = () => {
   const dispatch = useDispatch();
 
   const handleLoginOkPress = async () => {
-    await AsyncStorage.setItem('accessToken', config.ACCESS_TOKEN);
+    await saveAccessToken();
+    dispatch(setAccessToken(config.ACCESS_TOKEN));
     console.log("Access Token saved in Async storage.");
   }
 
@@ -46,7 +47,7 @@ const useLoginController = () => {
           values.email === LOGIN_CREDENTIALS.email &&
           values.password === LOGIN_CREDENTIALS.password
         ) {
-          dispatch(login({ token: config.ACCESS_TOKEN, inputEmail: values.email }));
+          dispatch(login(values.email));
           Alert.alert('Login successful', 'Press ok to continue', [
             {text: 'OK', onPress: () => handleLoginOkPress()},
           ]);

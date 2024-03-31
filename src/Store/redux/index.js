@@ -11,9 +11,9 @@ const rootReducer = combineReducers({
   orderSlice: orderReducer
 });
 
-const persistConfig = {
+/* const persistConfig = {
   key: 'root',
   storage: AsyncStorage
-}
+} */
 
 export default rootReducer;

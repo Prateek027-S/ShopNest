@@ -1,8 +1,8 @@
-import React from 'react'
-import { createStackNavigator } from '@react-navigation/stack'
-import { notAuthenticatedRoutes } from '@/Navigators/routes'
+import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { notAuthenticatedRoutes } from '../../routes';
 
-const Stack = createStackNavigator()
+const Stack = createNativeStackNavigator();
 
 const NoAuthenticatedStackNavigation = () => {
   return (
