@@ -1,29 +1,25 @@
 import 'react-native-gesture-handler';
-import React, { useEffect } from 'react';
+import React from 'react';
 import {NativeBaseProvider} from 'native-base';
 import theme from './Theme';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import { useDispatch } from 'react-redux';
 import ApplicationNavigator from './Navigators';
-import { getAccessToken } from './Utils/services/AsyncStorage.service';
-import { setAccessToken } from './Store/redux/user/userSlice';
+import { Provider } from 'react-redux';
+import { persistor, store } from './Store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const App = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    const initializeApp = async () => {
-      const token = await getAccessToken();
-      dispatch(setAccessToken(token));
-    };
-    initializeApp();
-  }, []);
 
   return (
-      <NativeBaseProvider theme={theme}>
-        <SafeAreaProvider>
-          <ApplicationNavigator />
-        </SafeAreaProvider>
-      </NativeBaseProvider>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <NativeBaseProvider theme={theme}>
+          <SafeAreaProvider>
+            <ApplicationNavigator />
+          </SafeAreaProvider>
+        </NativeBaseProvider>
+      </PersistGate>
+    </Provider>
   );
 };
 

@@ -5,13 +5,5 @@
 import {AppRegistry} from 'react-native';
 import App from './src/App';
 import {name as appName} from './app.json';
-import { Provider } from 'react-redux';
-import store from './src/Store';
 
-const Root = () => (
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
-
-AppRegistry.registerComponent(appName, () => Root);
+AppRegistry.registerComponent(appName, () => App);
