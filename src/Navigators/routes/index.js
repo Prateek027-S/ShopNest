@@ -4,10 +4,13 @@ import LoginScreen from "../../Screens/Login/Login.screen";
 import OrderHistoryScreen from "../../Screens/OrderHistory/OrderHistory.screen";
 import ProfileScreen from "../../Screens/Profile/Profile.screen";
 import { SCREEN_NAMES } from "../../Utils/constants";
-import PlusActiveIcon from "../../Components/UI-Kit/Icons/iconComponents/PlusActiveIcon";
-import PlusIcon from "../../Components/UI-Kit/Icons/iconComponents/PlusIcon";
 import HomeActiveIcon from "../../Components/UI-Kit/Icons/iconComponents/HomeActiveIcon";
 import HomeIcon from "../../Components/UI-Kit/Icons/iconComponents/HomeIcon";
+import CartIcon from "../../Components/UI-Kit/Icons/iconComponents/CartIcon";
+import CartActiveIcon from "../../Components/UI-Kit/Icons/iconComponents/CartActiveIcon";
+import HistoryIcon from "../../Components/UI-Kit/Icons/iconComponents/HistoryIcon";
+import HistoryActiveIcon from "../../Components/UI-Kit/Icons/iconComponents/HistoryActiveIcon";
+import UserIcon from "../../Components/UI-Kit/Icons/iconComponents/UserIcon";
 
 export const notAuthenticatedRoutes = [
   {
@@ -19,7 +22,7 @@ export const notAuthenticatedRoutes = [
 export const applicationTabRoutes = [
   {
     label: SCREEN_NAMES.home,
-    tabLabel: 'home',
+    tabLabel: 'Home',
     routeName: SCREEN_NAMES.home,
     component: HomeScreen,
     activeIcon: HomeActiveIcon,
@@ -29,21 +32,21 @@ export const applicationTabRoutes = [
   },
   {
     label: SCREEN_NAMES.cart,
-    tabLabel: 'cart',
+    tabLabel: 'Cart',
     routeName: SCREEN_NAMES.cart,
     component: CartScreen,
-    activeIcon: PlusActiveIcon,
-    inActiveIcon: PlusIcon,
+    activeIcon: CartActiveIcon,
+    inActiveIcon: CartIcon,
     headerShown: true,
     /* header: () => <Header variant='default' headerHeading='profile' /> */
   },
   {
     label: SCREEN_NAMES.orderHistory,
-    tabLabel: 'orderHistory',
+    tabLabel: 'Order History',
     routeName: SCREEN_NAMES.orderHistory,
     component: OrderHistoryScreen,
-    activeIcon: PlusActiveIcon,
-    inActiveIcon: PlusIcon,
+    activeIcon: HistoryActiveIcon,
+    inActiveIcon: HistoryIcon,
     headerShown: true,
     /* header: () => <Header variant='default' headerHeading='profile' /> */
   }
@@ -54,10 +57,10 @@ export const drawerRoutes = [
     label: SCREEN_NAMES.profile,
     routeName: SCREEN_NAMES.profile,
     component: ProfileScreen,
-    drawerLabel: 'profile',
-    /* optionIcon: CallIcon, */
+    drawerLabel: 'Profile',
+    optionIcon: UserIcon,
     headerShown: true,
-    headerHeading: 'profile',
+    headerHeading: 'Profile',
     header: null
   }
 ]

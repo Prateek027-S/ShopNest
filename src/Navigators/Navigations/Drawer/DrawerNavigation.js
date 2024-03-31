@@ -7,6 +7,7 @@ import { removeAccessToken } from '../../../Utils/services/AsyncStorage.service'
 import { useDispatch } from 'react-redux'
 import { useTheme } from 'native-base'
 import { setAccessToken } from '../../../Store/redux/user/userSlice'
+import LogoutIcon from '../../../Components/UI-Kit/Icons/iconComponents/LogoutIcon'
 
 const Drawer = createDrawerNavigator()
 
@@ -41,8 +42,8 @@ const DrawerNavigation = () => {
               <View style={{ borderBottomWidth: 1, position: 'absolute', top: '7%', width: '100%', borderBottomColor: colors.primaryBlue }} />
               <TouchableOpacity style={{ padding: 20, width: '100%' }} onPress={handleLogout}>
                 <View style={{ width: 82, flexDirection: 'row', justifyContent: 'space-between' }}>
-                  {/* <LogoutIcon /> */}
-                  <Text style={{ color: colors.grey900, fontSize: 14, fontWeight: '500' }}>Logout</Text>
+                  <LogoutIcon />
+                  <Text style={{ color: colors.grey900, fontSize: 14, fontWeight: '500'}}>Logout</Text>
                 </View>
               </TouchableOpacity>
             </DrawerContentScrollView>
@@ -64,12 +65,12 @@ const DrawerNavigation = () => {
               key={item.routeName} name={item.routeName} component={item.component}
               options={{
                 drawerLabel: item.drawerLabel,
-                //drawerIcon: item.optionIcon,
+                drawerIcon: item.optionIcon,
                 drawerLabelStyle: {
-                  marginLeft: 5
+                  marginLeft: -19
                 },
-                /* headerShown: item.headerShown,
-                header: item.headerShown
+                headerShown: item.headerShown,
+                /*header: item.headerShown
                   ? (
                       item.header
                         ? item.header

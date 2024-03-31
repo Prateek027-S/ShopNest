@@ -16,13 +16,13 @@ const TabButton = (props) => {
   const focused = accessibilityState.selected
   const viewRef = useRef(null)
 
-  /* useEffect(() => {
+  useEffect(() => {
     if (focused) {
       viewRef.current.animate(animate1)
     } else {
       viewRef.current.animate(animate2)
     }
-  }, [focused]) */
+  }, [focused])
 
   return (
     <TouchableOpacity
@@ -30,7 +30,7 @@ const TabButton = (props) => {
       activeOpacity={1}
       style={{ ...styles.container, paddingBottom: '3%' }}
     >
-      {/* <Animatable.View
+      <Animatable.View
         ref={viewRef}
         duration={1000}
         style={styles.container}
@@ -38,7 +38,7 @@ const TabButton = (props) => {
         {
           focused ? <item.activeIcon /> : <item.inActiveIcon />
         }
-      </Animatable.View> */}
+      </Animatable.View>
       <Text style={{ fontSize: 13 }}>{item.tabLabel}</Text>
     </TouchableOpacity>
   )
@@ -74,7 +74,7 @@ const TabNavigation = () => {
             options={{
               tabBarShowLabel: false,
               tabBarButton: (props) => <TabButton {...props} item={item} />,
-              /* header: item.headerShown
+              /* header: item.header
                 ? (
                     item.header
                       ? item.header
