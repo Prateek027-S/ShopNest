@@ -5,7 +5,7 @@ const Product = ({item, handleItemClick}) => {
   return (
     <TouchableOpacity
       style={{
-        width: '45%',
+        width: '48%',
         marginBottom: 10,
         borderRadius: 10,
         backgroundColor: 'white',
