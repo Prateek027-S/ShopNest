@@ -5,6 +5,7 @@ import { applicationTabRoutes } from '../../routes'
 import { Platform, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { useTheme } from 'native-base'
+import Header from '../../../Components/Layouts/Header'
 
 const Tab = createBottomTabNavigator()
 
@@ -74,14 +75,14 @@ const TabNavigation = () => {
             options={{
               tabBarShowLabel: false,
               tabBarButton: (props) => <TabButton {...props} item={item} />,
-              /* header: item.header
+              header: item.header
                 ? (
                     item.header
                       ? item.header
-                      : () => (<Header variant='default' headerHeading={t(item.headerHeading)} />)
+                      : () => (<Header variant='default' headerHeading={item.headerHeading} />)
                   )
                 : () => {},
-              headerShown: item.headerShown */
+              headerShown: item.headerShown
             }}
           />
         ))

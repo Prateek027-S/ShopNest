@@ -5,7 +5,7 @@ import { useTheme } from 'native-base'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { styles } from '../../Header.styles'
 
-const DefaultHeader = ({ heading, t }) => {
+const DefaultHeader = ({ heading }) => {
   const { colors } = useTheme()
 
   return (
@@ -16,7 +16,7 @@ const DefaultHeader = ({ heading, t }) => {
         </TouchableOpacity>
 
         <View style={styles.headingStyle}>
-          <Text style={{ color: colors.primaryBlue, fontWeight: 'bold', fontSize: 18 }}>{t(heading)}</Text>
+          <Text style={{ color: colors.primaryBlue, fontWeight: 'bold', fontSize: 18 }}>{heading}</Text>
         </View>
       </View>
     </>

@@ -12,6 +12,7 @@ import {useDispatch} from 'react-redux';
 import {useTheme} from 'native-base';
 import {setAccessToken} from '../../../Store/redux/user/user.slice';
 import LogoutIcon from '../../../Components/UI-Kit/Icons/iconComponents/LogoutIcon';
+import Header from '../../../Components/Layouts/Header';
 
 const Drawer = createDrawerNavigator();
 
@@ -104,13 +105,13 @@ const DrawerNavigation = () => {
                 marginLeft: -19,
               },
               headerShown: item.headerShown,
-              /*header: item.headerShown
+              header: item.headerShown
                   ? (
                       item.header
                         ? item.header
-                        : () => (<Header headerHeading={t(item.headerHeading)} />)
+                        : () => (<Header headerHeading={item.headerHeading} />)
                     )
-                  : () => {} */
+                  : () => {}
             }}
           />
         ))}

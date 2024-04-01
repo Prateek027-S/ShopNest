@@ -11,6 +11,7 @@ import CartActiveIcon from "../../Components/UI-Kit/Icons/iconComponents/CartAct
 import HistoryIcon from "../../Components/UI-Kit/Icons/iconComponents/HistoryIcon";
 import HistoryActiveIcon from "../../Components/UI-Kit/Icons/iconComponents/HistoryActiveIcon";
 import UserIcon from "../../Components/UI-Kit/Icons/iconComponents/UserIcon";
+import Header from "../../Components/Layouts/Header";
 
 export const notAuthenticatedRoutes = [
   {
@@ -28,7 +29,7 @@ export const applicationTabRoutes = [
     activeIcon: HomeActiveIcon,
     inActiveIcon: HomeIcon,
     headerShown: true,
-    /* header: () => <Header variant='home' /> */
+    header: () => <Header variant='home' />
   },
   {
     label: SCREEN_NAMES.cart,
@@ -38,7 +39,7 @@ export const applicationTabRoutes = [
     activeIcon: CartActiveIcon,
     inActiveIcon: CartIcon,
     headerShown: true,
-    /* header: () => <Header variant='default' headerHeading='profile' /> */
+    header: () => <Header variant='default' headerHeading='Cart' />
   },
   {
     label: SCREEN_NAMES.orderHistory,
@@ -48,7 +49,7 @@ export const applicationTabRoutes = [
     activeIcon: HistoryActiveIcon,
     inActiveIcon: HistoryIcon,
     headerShown: true,
-    /* header: () => <Header variant='default' headerHeading='profile' /> */
+    header: () => <Header variant='default' headerHeading='Order History' />
   }
 ]
 
@@ -61,6 +62,6 @@ export const drawerRoutes = [
     optionIcon: UserIcon,
     headerShown: true,
     headerHeading: 'Profile',
-    header: null
+    header: () => <Header variant='default' headerHeading='Profile' />
   }
 ]
