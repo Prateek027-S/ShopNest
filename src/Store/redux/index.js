@@ -2,7 +2,6 @@ import {combineReducers} from '@reduxjs/toolkit';
 import userReducer from './user/user.slice';
 import cartReducer from './cart/cart.slice';
 import orderReducer from './order/order.slice';
-import loaderReducer from './loader/loader.slice'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {persistReducer} from 'redux-persist';
 import api from '../../Network/api';
@@ -12,7 +11,6 @@ const reducers = combineReducers({
   userSlice: userReducer,
   cartSlice: cartReducer,
   orderSlice: orderReducer,
-  loader: loaderReducer,
 });
 
 const persistConfig = {
