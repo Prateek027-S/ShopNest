@@ -10,3 +10,24 @@ export const SCREEN_NAMES = {
   orderHistory: 'Order History',
   cart: 'Cart'
 }
+
+export const LOADER_HANDLER_TYPES = {
+  screen: 'screenLoader',
+  appLoader: 'appLoader'
+}
+
+export const SNACKBAR_TYPE = {
+  success: 'success',
+  error: 'error',
+  warning: 'warning',
+  info: 'info'
+}
+
+export const SNACKBAR_PLACEMENT = {
+  bottom: 'bottom',
+  top: 'top',
+  topLeft: 'top-left',
+  topRight: 'top-right',
+  bottomLeft: 'bottom-left',
+  bottomRight: 'bottom-right'
+}
