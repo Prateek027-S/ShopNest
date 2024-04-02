@@ -8,6 +8,7 @@ const CustomText = ({
   marginLeft,
   color,
   textAlign,
+  fontFamily,
   children,
   ...otherProps
 }) => {
@@ -19,6 +20,7 @@ const CustomText = ({
       marginLeft={marginLeft}
       color={color}
       textAlign={textAlign}
+      fontFamily={fontFamily}
       {...otherProps}
     >
       {children}
@@ -29,5 +31,6 @@ const CustomText = ({
 export default CustomText
 
 CustomText.defaultProps = {
-  fontSize: 'md'
+  fontSize: 'md',
+  fontFamily: 'Poppins-Medium'
 }

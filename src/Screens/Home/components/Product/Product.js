@@ -1,9 +1,9 @@
-import {TouchableOpacity, Image, View} from 'react-native';
+import { Pressable, Image, View } from 'native-base';
 import CustomText from '../../../../Components/UI-Kit/CustomText';
 
 const Product = ({item, handleItemClick}) => {
   return (
-    <TouchableOpacity
+    <Pressable
       style={{
         width: '48%',
         marginBottom: 10,
@@ -15,19 +15,18 @@ const Product = ({item, handleItemClick}) => {
       onPress={() => handleItemClick(item)}>
       <Image
         source={{uri: item.images[0]}}
-        style={{
-          height: 200,
-          width: '100%',
-          borderTopLeftRadius: 10,
-          borderTopRightRadius: 10,
-          objectFit: 'contain',
-        }}
+        alt={item.title}
+        height={'200'}
+        width={'100%'}
+        borderTopLeftRadius={10}
+        borderTopRightRadius={10}
+        resizeMode='contain'
       />
       <View style={{padding: 10}}>
         <CustomText bold fontSize={'lg'} marginBottom={2}>{item.title}</CustomText>
         <CustomText fontSize={'md'} marginTop={5}>Price: {item.price}</CustomText>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 

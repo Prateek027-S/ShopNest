@@ -1,12 +1,13 @@
 import {useFormik} from 'formik';
 import * as yup from 'yup';
-import {LOGIN_CREDENTIALS} from '../../../Utils/constants';
+import {LOGIN_CREDENTIALS, SNACKBAR_PLACEMENT, SNACKBAR_TYPE} from '../../../Utils/constants';
 import {Alert} from 'react-native';
 import {useState} from 'react';
 import {login, setAccessToken} from '../../../Store/redux/user/user.slice';
 import {useDispatch} from 'react-redux';
 import {saveAccessToken} from '../../../Utils/services/AsyncStorage.service';
 import config from '../../../Config/app.config';
+import { handleShowToast } from '../../../Utils/helpers/toast.helpers';
 
 const useLoginController = () => {
   const [show, setShow] = useState(false);
@@ -54,15 +55,20 @@ const useLoginController = () => {
         values.password === LOGIN_CREDENTIALS.password
       ) {
         dispatch(login(values.email));
-        Alert.alert('Login successful', 'Press ok to continue', [
-          {text: 'OK', onPress: () => handleLoginOkPress()},
-        ]);
+        handleShowToast({
+          status: SNACKBAR_TYPE.success,
+          description: 'Login successful!',
+          placement: SNACKBAR_PLACEMENT.topRight
+        });
+        await saveAccessToken();
+        dispatch(setAccessToken(config.ACCESS_TOKEN));
+        console.log('Access Token saved in Async storage.');
       } else {
-        Alert.alert(
-          'Incorrect Credentials',
-          'Please enter correct login credentials!',
-          [{text: 'OK', onPress: () => console.log('OK Pressed')}],
-        );
+        handleShowToast({
+          status: SNACKBAR_TYPE.error,
+          description: 'Incorrect credentials!!',
+          placement: SNACKBAR_PLACEMENT.bottomRight
+        });
       }
       resetForm();
     },

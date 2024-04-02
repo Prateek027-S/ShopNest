@@ -1,6 +1,6 @@
 import React from 'react'
 import BackArrowIcon from '@/Components/UI-Kit/Icons/iconComponents/BackArrowIcon'
-import { navigationRef } from '@/Navigators/utils'
+import { navigationRef } from '../../../../../Navigators/utils'
 import { useTheme } from 'native-base'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { styles } from '../../Header.styles'

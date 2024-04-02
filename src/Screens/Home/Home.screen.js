@@ -20,6 +20,7 @@ const HomeScreen = () => {
     modalVisible,
     isFetching,
     handleItemClick,
+    addToCart,
     handleCloseDetails,
   } = useHomeController();
 
@@ -97,7 +98,7 @@ const HomeScreen = () => {
                     </Button>
                     <Button
                       onPress={() => {
-                        handleCloseDetails();
+                        addToCart(selectedItem);
                       }}>
                       Add to Cart
                     </Button>
