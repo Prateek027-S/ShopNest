@@ -2,8 +2,9 @@ import React from 'react'
 import BackArrowIcon from '@/Components/UI-Kit/Icons/iconComponents/BackArrowIcon'
 import { navigationRef } from '../../../../../Navigators/utils'
 import { useTheme } from 'native-base'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { TouchableOpacity, View } from 'react-native'
 import { styles } from '../../Header.styles'
+import CustomText from '../../../../UI-Kit/CustomText'
 
 const DefaultHeader = ({ heading }) => {
   const { colors } = useTheme()
@@ -16,7 +17,7 @@ const DefaultHeader = ({ heading }) => {
         </TouchableOpacity>
 
         <View style={styles.headingStyle}>
-          <Text style={{ color: colors.primaryBlue, fontWeight: 'bold', fontSize: 18 }}>{heading}</Text>
+          <CustomText style={{ color: colors.primaryBlue, fontWeight: 'bold', fontSize: 18 }}>{heading}</CustomText>
         </View>
       </View>
     </>

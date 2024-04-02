@@ -4,14 +4,13 @@ import CustomText from '../../../../Components/UI-Kit/CustomText';
 const Product = ({item, handleItemClick}) => {
   return (
     <Pressable
-      style={{
-        width: '48%',
-        marginBottom: 10,
-        borderRadius: 10,
-        backgroundColor: 'white',
-        elevation: 5,
-        marginHorizontal: 5,
-      }}
+      width={'48%'}
+      marginBottom={4}
+      borderRadius={10}
+      backgroundColor={'white'}
+      shadow={5}
+      marginLeft={1}
+      marginRight={2}
       onPress={() => handleItemClick(item)}>
       <Image
         source={{uri: item.images[0]}}

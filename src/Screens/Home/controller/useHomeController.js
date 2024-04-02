@@ -58,6 +58,11 @@ const useHomeController = () => {
         newCartItems.push(selectedItem);
     }
     dispatch(setCartItems(newCartItems));
+    handleShowToast({
+      status: SNACKBAR_TYPE.success,
+      description: 'Item added into the cart!',
+      placement: SNACKBAR_PLACEMENT.topRight
+    });
   };
 
   return {

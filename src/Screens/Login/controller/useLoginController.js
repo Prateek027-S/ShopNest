@@ -1,7 +1,6 @@
 import {useFormik} from 'formik';
 import * as yup from 'yup';
 import {LOGIN_CREDENTIALS, SNACKBAR_PLACEMENT, SNACKBAR_TYPE} from '../../../Utils/constants';
-import {Alert} from 'react-native';
 import {useState} from 'react';
 import {login, setAccessToken} from '../../../Store/redux/user/user.slice';
 import {useDispatch} from 'react-redux';
@@ -12,12 +11,6 @@ import { handleShowToast } from '../../../Utils/helpers/toast.helpers';
 const useLoginController = () => {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
-
-  const handleLoginOkPress = async () => {
-    await saveAccessToken();
-    dispatch(setAccessToken(config.ACCESS_TOKEN));
-    console.log('Access Token saved in Async storage.');
-  };
 
   const loginFormSchema = yup.object({
     email: yup

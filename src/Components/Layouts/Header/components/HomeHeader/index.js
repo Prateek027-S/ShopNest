@@ -4,6 +4,7 @@ import { navigationRef } from '../../../../../Navigators/utils';
 import { DrawerActions } from '@react-navigation/native';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { styles } from '../../Header.styles';
+import CustomText from '../../../../UI-Kit/CustomText';
 
 const HomeHeader = ({ colors }) => {
   return (
@@ -13,7 +14,7 @@ const HomeHeader = ({ colors }) => {
       </TouchableOpacity>
 
       <View style={styles.headingStyle}>
-        <Text style={{ color: colors.primaryBlue, fontWeight: 'bold', fontSize: 18 }}>Shoppify</Text>
+        <CustomText style={{ color: colors.primaryBlue, fontWeight: 'bold', fontSize: 18 }}>Shoppify</CustomText>
       </View>
 
     </View>
