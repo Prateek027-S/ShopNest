@@ -11,11 +11,6 @@ export const SCREEN_NAMES = {
   cart: 'Cart'
 }
 
-export const LOADER_HANDLER_TYPES = {
-  screen: 'screenLoader',
-  appLoader: 'appLoader'
-}
-
 export const SNACKBAR_TYPE = {
   success: 'success',
   error: 'error',

@@ -1,7 +1,9 @@
-import {Box, Center, Stack, Heading, Input, Button, Text} from 'native-base';
+import {Box, Center, Stack, Heading, Input, Pressable, Text, Icon} from 'native-base';
 import React from 'react';
 import useLoginController from './controller/useLoginController';
 import CustomButton from '../../Components/UI-Kit/CustomButton';
+import EyeIcon from '../../Components/UI-Kit/Icons/iconComponents/EyeIcon';
+import CrossedEyeIcon from '../../Components/UI-Kit/Icons/iconComponents/CrossedEyeIcon';
 
 const LoginScreen = () => {
   const {
@@ -51,17 +53,19 @@ const LoginScreen = () => {
                 onChangeText={handleChange('password')}
                 onBlur={handleBlur('password')}
                 marginTop={'5'}
-                InputRightElement={
-                  <Button
-                    size="xs"
-                    rounded="none"
-                    w="1/6"
-                    h="full"
-                    onPress={() => setShow(!show)}>
-                    {show ? 'Hide' : 'Show'}
-                  </Button>
-                }
                 placeholder="Password"
+                InputRightElement={
+                  <Pressable onPress={() => setShow(!show)}>
+                    <Icon
+                      as={
+                        show ? <EyeIcon /> : <CrossedEyeIcon />
+                      }
+                      size={5}
+                      mr="2"
+                      color="muted.400"
+                    />
+                  </Pressable>
+                }
               />
 
               {touched.password && errors.password && (

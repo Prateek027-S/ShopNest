@@ -2,14 +2,14 @@ import {useFormik} from 'formik';
 import * as yup from 'yup';
 import {LOGIN_CREDENTIALS} from '../../../Utils/constants';
 import {Alert} from 'react-native';
-import React from 'react';
+import {useState} from 'react';
 import {login, setAccessToken} from '../../../Store/redux/user/user.slice';
 import {useDispatch} from 'react-redux';
 import {saveAccessToken} from '../../../Utils/services/AsyncStorage.service';
 import config from '../../../Config/app.config';
 
 const useLoginController = () => {
-  const [show, setShow] = React.useState(false);
+  const [show, setShow] = useState(false);
   const dispatch = useDispatch();
 
   const handleLoginOkPress = async () => {

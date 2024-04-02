@@ -6,12 +6,10 @@ const useHomeController = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
 
-  const [fetchProducts] = useLazyGetProductsQuery();
+  const [fetchProducts, {isFetching}] = useLazyGetProductsQuery();
 
   const getData = async () => {
-    const {data, isLoading} = await fetchProducts();
-    console.log('res.data: ', data);
-    console.log("res.isLoading: ", isLoading)
+    const {data} = await fetchProducts();
     setItems(data.products);
   };
 
@@ -32,6 +30,7 @@ const useHomeController = () => {
     items,
     selectedItem,
     modalVisible,
+    isFetching,
     handleItemClick,
     handleCloseDetails,
   };
