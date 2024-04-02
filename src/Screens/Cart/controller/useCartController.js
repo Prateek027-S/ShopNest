@@ -69,7 +69,7 @@ const useCartController = () => {
       handleShowToast({
         status: SNACKBAR_TYPE.error,
         description: 'Please complete your profile before proceeding further',
-        placement: SNACKBAR_PLACEMENT.top
+        placement: SNACKBAR_PLACEMENT.bottom
       });
     } else {
       const orderItemAndAmount = {

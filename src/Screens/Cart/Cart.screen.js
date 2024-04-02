@@ -100,7 +100,7 @@ const CartScreen = () => {
                       </Box>
                     ))}
                   </Box>
-                  <CustomText bold marginLeft={'17'} marginTop={5}>
+                  <CustomText bold marginLeft={'25px'} marginTop={5}>
                     Total Amount: {getTotalAmount()}
                   </CustomText>
                 </ScrollView>
