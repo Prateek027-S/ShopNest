@@ -1,6 +1,6 @@
 import {useSelector, useDispatch} from 'react-redux';
 import {setCartItems} from '../../../Store/redux/cart/cart.slice';
-import {setOrderHistory} from '../../../Store/redux/order/order.slice';
+import {setOrderHistory} from '../../../Store/redux/orderHistory/orderHistory.slice';
 import {useState} from 'react';
 import {handleShowToast} from '../../../Utils/helpers/toast.helpers';
 import {
@@ -17,7 +17,7 @@ const useCartController = () => {
   );
   const [modalVisible, setModalVisible] = useState(false);
   const {cartItems} = useSelector(state => state.cartSlice);
-  const {orderHistory} = useSelector(state => state.orderSlice);
+  const {orderHistory} = useSelector(state => state.orderHistorySlice);
   let totalAmount = 0;
 
   const handleCloseDetails = () => {
@@ -84,23 +84,19 @@ const useCartController = () => {
 
   const handlePlaceOrder = () => {
     console.log('Inside placeOrder function');
-    const orderItemAndAmount = {
-      newOrderItems: cartItems,
-      newTotalAmount: totalAmount,
-      newOrderHistory: [...orderHistory],
-    };
-    dispatch(setOrderHistory(orderItemAndAmount));
-    dispatch(setCartItems([]));
     const currentTime = new Date().toLocaleString();
-    const newOrder = {items: orderItems, time: currentTime};
+    const newOrder = {items: cartItems, time: currentTime};
+    dispatch(setCartItems([]));
     dispatch(
       setOrderHistory({
-        newOrderItems: [],
-        newTotalAmount: 0,
         newOrderHistory: [...orderHistory, newOrder],
       }),
     );
-    toast.success('Order Placed!');
+    handleShowToast({
+      status: SNACKBAR_TYPE.success,
+      description: 'Order Placed!',
+      placement: SNACKBAR_PLACEMENT.top,
+    });
   };
 
   return {

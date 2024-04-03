@@ -1,4 +1,4 @@
-import {Box, FlatList, ScrollView, Modal, Text, Button} from 'native-base';
+import {Box, FlatList, ScrollView, Modal, Button} from 'native-base';
 import React from 'react';
 import useCartController from './controller/useCartController';
 import Colors from '../../Theme/colors';
