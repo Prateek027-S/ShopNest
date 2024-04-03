@@ -10,7 +10,7 @@ export const orderSlice = createSlice({
     orderHistory: []
   },
   reducers: {
-    setOrderAndHistory: (state, action) => {
+    setOrderHistory: (state, action) => {
       const {newOrderItems, newTotalAmount, newOrderHistory} = action.payload;
         return {
             ...state,
@@ -22,6 +22,6 @@ export const orderSlice = createSlice({
   },
 });
 
-export const { setOrderAndHistory } = orderSlice.actions;
+export const { setOrderHistory } = orderSlice.actions;
 
 export default orderSlice.reducer;

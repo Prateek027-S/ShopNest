@@ -1,16 +1,23 @@
-import { useSelector, useDispatch } from "react-redux";
-import { setCartItems } from "../../../Store/redux/cart/cart.slice";
-import { setOrderAndHistory } from "../../../Store/redux/order/order.slice";
-import { useState } from "react";
-import { handleShowToast } from "../../../Utils/helpers/toast.helpers";
-import { SNACKBAR_PLACEMENT, SNACKBAR_TYPE } from "../../../Utils/constants";
+import {useSelector, useDispatch} from 'react-redux';
+import {setCartItems} from '../../../Store/redux/cart/cart.slice';
+import {setOrderHistory} from '../../../Store/redux/order/order.slice';
+import {useState} from 'react';
+import {handleShowToast} from '../../../Utils/helpers/toast.helpers';
+import {
+  SCREEN_NAMES,
+  SNACKBAR_PLACEMENT,
+  SNACKBAR_TYPE,
+} from '../../../Utils/constants';
+import {navigate} from '../../../Navigators/utils';
 
 const useCartController = () => {
   const dispatch = useDispatch();
-  const { firstName } = useSelector((state) => state.userSlice);
+  const {firstName, lastName, mobile, email, address} = useSelector(
+    state => state.userSlice,
+  );
   const [modalVisible, setModalVisible] = useState(false);
-  const { cartItems } = useSelector((state) => state.cartSlice);
-  const { orderHistory } = useSelector((state) => state.orderSlice)
+  const {cartItems} = useSelector(state => state.cartSlice);
+  const {orderHistory} = useSelector(state => state.orderSlice);
   let totalAmount = 0;
 
   const handleCloseDetails = () => {
@@ -20,24 +27,24 @@ const useCartController = () => {
   const getTotalAmount = () => {
     totalAmount = cartItems.reduce(
       (acc, item) => acc + item.price * item.quantity,
-      0
+      0,
     );
     return totalAmount;
   };
 
-  const onRemoveBtnClick = (itemId) => {
-    const newCartItems = cartItems.filter((item) => item.id !== itemId);
+  const onRemoveBtnClick = itemId => {
+    const newCartItems = cartItems.filter(item => item.id !== itemId);
     dispatch(setCartItems(newCartItems));
   };
 
   const updateQuantity = (itemId, flag) => {
-    const itemIndex = cartItems.findIndex((item) => item.id === itemId);
+    const itemIndex = cartItems.findIndex(item => item.id === itemId);
     const oldQuantity = cartItems[itemIndex].quantity;
     let newCartItems = [...cartItems];
     if (!flag) {
       //if we are decrementing the quantity: flag=false
       if (oldQuantity === 1) {
-        newCartItems = newCartItems.filter((item) => item.id !== itemId);
+        newCartItems = newCartItems.filter(item => item.id !== itemId);
       } else {
         newCartItems[itemIndex] = {
           ...newCartItems[itemIndex],
@@ -46,51 +53,70 @@ const useCartController = () => {
       }
     } else {
       // incrementing the quantity: flag=true
-      if(oldQuantity < newCartItems[itemIndex].stock) {
+      if (oldQuantity < newCartItems[itemIndex].stock) {
         newCartItems[itemIndex] = {
           ...newCartItems[itemIndex],
           quantity: oldQuantity + 1,
         };
-      }
-      else {
+      } else {
         handleShowToast({
           status: SNACKBAR_TYPE.info,
           description: 'No more stock available!',
-          placement: SNACKBAR_PLACEMENT.top
+          placement: SNACKBAR_PLACEMENT.top,
         });
       }
     }
     dispatch(setCartItems(newCartItems));
   };
 
-  const handlePlaceOrder = () => {
-    console.log("Inside placeOrder function");
+  const handleProceedForPayment = () => {
     if (firstName === '') {
+      navigate(SCREEN_NAMES.profile);
       handleShowToast({
-        status: SNACKBAR_TYPE.error,
+        status: SNACKBAR_TYPE.info,
         description: 'Please complete your profile before proceeding further',
-        placement: SNACKBAR_PLACEMENT.bottom
+        placement: SNACKBAR_PLACEMENT.top,
       });
     } else {
-      const orderItemAndAmount = {
-        newOrderItems: cartItems,
-        newTotalAmount: totalAmount,
-        newOrderHistory: [...orderHistory]
-      };
-      dispatch(setOrderAndHistory(orderItemAndAmount));
-      /* Navigate to Place Order Screen/Full Screen Modal */
+      setModalVisible(true);
     }
+  };
+
+  const handlePlaceOrder = () => {
+    console.log('Inside placeOrder function');
+    const orderItemAndAmount = {
+      newOrderItems: cartItems,
+      newTotalAmount: totalAmount,
+      newOrderHistory: [...orderHistory],
+    };
+    dispatch(setOrderHistory(orderItemAndAmount));
+    dispatch(setCartItems([]));
+    const currentTime = new Date().toLocaleString();
+    const newOrder = {items: orderItems, time: currentTime};
+    dispatch(
+      setOrderHistory({
+        newOrderItems: [],
+        newTotalAmount: 0,
+        newOrderHistory: [...orderHistory, newOrder],
+      }),
+    );
+    toast.success('Order Placed!');
   };
 
   return {
     modalVisible,
     cartItems,
-    setModalVisible,
+    firstName,
+    lastName,
+    mobile,
+    email,
+    address,
+    handleProceedForPayment,
     handleCloseDetails,
     getTotalAmount,
     onRemoveBtnClick,
     updateQuantity,
-    handlePlaceOrder
+    handlePlaceOrder,
   };
 };
 

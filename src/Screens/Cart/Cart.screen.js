@@ -10,7 +10,12 @@ const CartScreen = () => {
   const {
     modalVisible,
     cartItems,
-    setModalVisible,
+    firstName,
+    lastName,
+    mobile,
+    email,
+    address,
+    handleProceedForPayment,
     handleCloseDetails,
     getTotalAmount,
     onRemoveBtnClick,
@@ -51,7 +56,7 @@ const CartScreen = () => {
             w={'200'}
             h={'10'}
             onPress={() => {
-              setModalVisible(true);
+              handleProceedForPayment();
             }}
             value={'Proceed to Checkout'}
           />
@@ -61,10 +66,25 @@ const CartScreen = () => {
             size={'xl'}>
             <Modal.Content height={700}>
               <Modal.CloseButton />
-              <Modal.Header>Order Summary</Modal.Header>
+              <Modal.Header>Order Confirmation</Modal.Header>
               <Modal.Body>
                 <ScrollView>
                   <Box marginTop={5} marginLeft={5}>
+                    <CustomText>
+                      Recipient Name: {firstName} {lastName}
+                    </CustomText>
+                    <CustomText>
+                      Phone No.: {mobile}
+                    </CustomText>
+                    <CustomText>
+                      Email: {email}
+                    </CustomText>
+                    <CustomText>
+                      Address: {address}
+                    </CustomText>
+                    <CustomText bold marginTop={4}>
+                      Product Details:-
+                    </CustomText>
                     <Box flexDirection="row" borderBottomWidth={1} padding={2}>
                       <Box flex={2}>
                         <CustomText bold>Item</CustomText>
