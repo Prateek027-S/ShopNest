@@ -4,8 +4,9 @@ import * as Animatable from 'react-native-animatable'
 import { applicationTabRoutes } from '../../routes'
 import { Platform, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { useTheme } from 'native-base'
 import Header from '../../../Components/Layouts/Header'
+import Colors from '../../../Theme/colors'
+import CustomText from '../../../Components/UI-Kit/CustomText'
 
 const Tab = createBottomTabNavigator()
 
@@ -40,13 +41,12 @@ const TabButton = (props) => {
           focused ? <item.activeIcon /> : <item.inActiveIcon />
         }
       </Animatable.View>
-      <Text style={{ fontSize: 13 }}>{item.tabLabel}</Text>
+      <CustomText fontSize={'sm'} marginTop={1} color={Colors.white}>{item.tabLabel}</CustomText>
     </TouchableOpacity>
   )
 }
 
 const TabNavigation = () => {
-  const { colors } = useTheme()
 
   return (
     <Tab.Navigator
@@ -61,7 +61,7 @@ const TabNavigation = () => {
           bottom: 0,
           right: 0,
           left: 0,
-          backgroundColor: colors.white
+          backgroundColor: Colors.charcoal
         }
       }}
       sceneContainerStyle={{

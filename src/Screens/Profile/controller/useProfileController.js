@@ -50,7 +50,7 @@ const useProfileController = () => {
         handleShowToast({
           status: SNACKBAR_TYPE.success,
           description: 'Details Saved',
-          placement: SNACKBAR_PLACEMENT.top,
+          placement: SNACKBAR_PLACEMENT.bottom,
         });
         goBackNavigation();
       },

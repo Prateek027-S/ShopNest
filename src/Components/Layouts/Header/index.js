@@ -1,18 +1,17 @@
 import React from 'react'
 import HomeHeader from './components/HomeHeader'
 import DefaultHeader from './components/DefaultHeader'
-import { useTheme } from 'native-base'
+import Colors from '../../../Theme/colors'
 
 const Header = ({
   variant = 'default',
   headerHeading,
 }) => {
-  const { colors } = useTheme()
 
   switch (variant) {
     case 'home':
       return (
-        <HomeHeader colors={colors} />
+        <HomeHeader colors={Colors} />
       )
     default:
       return (

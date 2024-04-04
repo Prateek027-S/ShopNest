@@ -4,6 +4,9 @@ import useLoginController from './controller/useLoginController';
 import CustomButton from '../../Components/UI-Kit/CustomButton';
 import EyeIcon from '../../Components/UI-Kit/Icons/iconComponents/EyeIcon';
 import CrossedEyeIcon from '../../Components/UI-Kit/Icons/iconComponents/CrossedEyeIcon';
+import CustomText from '../../Components/UI-Kit/CustomText';
+import Colors from '../../Theme/colors';
+import CustomInput from '../../Components/UI-Kit/CustomInput';
 
 const LoginScreen = () => {
   const {
@@ -18,22 +21,25 @@ const LoginScreen = () => {
   } = useLoginController();
 
   return (
-    <Center width={'100%'} height={'70%'}>
+    <Box flex={1} backgroundColor={Colors.backgroundBlack}>
+      <CustomText fontSize={'2xl'} color={Colors.primaryBlue} alignSelf={'center'} marginTop={'20'} fontFamily={'Poppins-Bold'}>Shoppify</CustomText>
+    <Center width={'100%'} height={'77%'}>
       <Box alignItems="center">
         <Box
           paddingVertical={20}
           width="400"
           rounded="lg"
           overflow="hidden"
-          borderColor="coolGray.200"
-          borderWidth="1">
+          borderRadius={'20'}
+          backgroundColor={Colors.mattBlack}
+          >
           <Stack p="4" space={3}>
-            <Heading size="2xl" alignSelf={'center'}>
+            <Heading size="xl" alignSelf={'center'} color={'#C7C8CC'} fontFamily={'Poppins-Bold'} marginBottom={4}>
               Login
             </Heading>
 
             <Stack mx="4">
-              <Input
+              <CustomInput
                 type="text"
                 placeholder="Email ID"
                 onChangeText={handleChange('email')}
@@ -42,12 +48,12 @@ const LoginScreen = () => {
               />
 
               {touched.email && errors.email && (
-                <Text style={{fontSize: 10, color: 'red'}}>{errors.email}</Text>
+                <CustomText fontSize={'sm'} marginTop={2} color={Colors.red}>{errors.email}</CustomText>
               )}
             </Stack>
 
             <Stack mx="4">
-              <Input
+              <CustomInput
                 type={show ? 'text' : 'password'}
                 value={values.password}
                 onChangeText={handleChange('password')}
@@ -69,22 +75,23 @@ const LoginScreen = () => {
               />
 
               {touched.password && errors.password && (
-                <Text style={{fontSize: 10, color: 'red'}}>
+                <CustomText fontSize={'sm'} marginTop={2} color={Colors.red}>
                   {errors.password}
-                </Text>
+                </CustomText>
               )}
             </Stack>
 
             <CustomButton
               marginTop={10}
               alignSelf={'center'}
-              value="Log in"
+              value={<CustomText bold color={'white'}>Login</CustomText>}
               onPress={handleSubmit}
             />
           </Stack>
         </Box>
       </Box>
     </Center>
+    </Box>
   );
 };
 

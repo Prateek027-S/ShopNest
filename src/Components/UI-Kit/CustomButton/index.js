@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from 'native-base'
-import Colors from '@/Theme/colors'
+import Colors from '../../../Theme/colors';
 
 const CustomButton = ({
   onPress,
@@ -59,10 +59,7 @@ CustomButton.defaultProps = {
   isLoadingText: '',
   spinnerPlacement: 'end',
   isDisabled: false,
-  // uses primary.600 in theme folder and primary.800(onpress)
-  // subtle variant uses primary.100 and primary.200(onpress)
-  colorScheme: 'primary',
   w: '90%',
-  backgroundColor: 'darkgreen',
-  textColor: Colors.white
+  bg: Colors.activeOrange,
+  textColor: Colors.white,
 }

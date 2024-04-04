@@ -47,7 +47,7 @@ const useHomeController = () => {
         handleShowToast({
           status: SNACKBAR_TYPE.info,
           description: 'No more stock available!',
-          placement: SNACKBAR_PLACEMENT.topRight
+          placement: SNACKBAR_PLACEMENT.bottom
         });
         return;
       }
@@ -61,7 +61,7 @@ const useHomeController = () => {
     handleShowToast({
       status: SNACKBAR_TYPE.success,
       description: 'Item added into the cart!',
-      placement: SNACKBAR_PLACEMENT.topRight
+      placement: SNACKBAR_PLACEMENT.bottom
     });
   };
 

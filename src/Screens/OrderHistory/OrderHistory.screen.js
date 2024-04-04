@@ -8,7 +8,7 @@ const OrderHistoryScreen = () => {
   const {orderHistory} = useOrderHistoryController();
 
   return (
-    <VStack>
+    <VStack backgroundColor={Colors.backgroundBlack}>
       {orderHistory.length === 0 ? (
         <CustomText fontSize={'lg'} margin={3} color={Colors.primaryBlue}>
           No orders found!!
@@ -19,13 +19,12 @@ const OrderHistoryScreen = () => {
             Your past orders:-
           </CustomText>
           {orderHistory.map((order, index) => (
-            <VStack margin={3} key={index}>
-              <Box width={'100%'} backgroundColor={Colors.primaryBlue}>
+            <VStack margin={3} key={index} backgroundColor={Colors.primaryBlue}>
+              <Box width={'100%'} backgroundColor={Colors.darkTeal}>
                 <CustomText padding={2} color={'white'}>
                   Order {index + 1} - {order.time}
                 </CustomText>
               </Box>
-              <ScrollView>
                 <Box marginTop={5} marginLeft={5}>
                   <Box flexDirection="row" borderBottomWidth={1} padding={2}>
                     <Box flex={2}>
@@ -56,7 +55,6 @@ const OrderHistoryScreen = () => {
                     </Box>
                   ))}
                 </Box>
-              </ScrollView>
             </VStack>
           ))}
         </ScrollView>

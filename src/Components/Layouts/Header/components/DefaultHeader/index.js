@@ -1,5 +1,5 @@
 import React from 'react'
-import BackArrowIcon from '@/Components/UI-Kit/Icons/iconComponents/BackArrowIcon'
+import BackArrowIcon from '../../../../UI-Kit/Icons/iconComponents/BackArrowIcon'
 import { navigationRef } from '../../../../../Navigators/utils'
 import { useTheme } from 'native-base'
 import { TouchableOpacity, View } from 'react-native'
@@ -11,13 +11,13 @@ const DefaultHeader = ({ heading }) => {
 
   return (
     <>
-      <View style={styles.root}>
+      <View style={styles.root} backgroundColor={colors.charcoal}>
         <TouchableOpacity style={{ ...styles.iconStyle, marginLeft: 5 }} onPress={() => navigationRef.goBack()}>
           <BackArrowIcon />
         </TouchableOpacity>
 
         <View style={styles.headingStyle}>
-          <CustomText style={{ color: colors.primaryBlue, fontWeight: 'bold', fontSize: 18 }}>{heading}</CustomText>
+          <CustomText style={{ color: colors.white, fontWeight: 'bold', fontSize: 18 }}>{heading}</CustomText>
         </View>
       </View>
     </>

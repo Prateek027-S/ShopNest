@@ -24,15 +24,16 @@ const CartScreen = () => {
   } = useCartController();
 
   return (
-    <Box flex={1} marginTop={5} marginLeft={5} color={Colors.primaryBlue}>
+    <Box flex={1} color={Colors.primaryBlue} backgroundColor={Colors.backgroundBlack}>
       {cartItems.length === 0 ? (
-        <CustomText fontSize={'lg'} marginInline={3}>
+        <CustomText color={Colors.primaryBlue} marginTop={5} marginLeft={5} fontSize={'lg'} marginInline={3}>
           Cart is empty!
         </CustomText>
       ) : (
         <>
           <CustomText
             fontSize={'lg'}
+            marginTop={5} marginLeft={5}
             marginInline={3}
             color={Colors.primaryBlue}
             marginBottom={5}>
@@ -40,6 +41,8 @@ const CartScreen = () => {
           </CustomText>
 
           <FlatList
+            marginTop={5} 
+            marginLeft={5}
             data={cartItems}
             renderItem={({item}) => (
               <CartItem
@@ -55,6 +58,8 @@ const CartScreen = () => {
           <CustomButton
             w={'200'}
             h={'10'}
+            marginLeft={5}
+            marginBottom={2}
             onPress={() => {
               handleProceedForPayment();
             }}
@@ -64,39 +69,39 @@ const CartScreen = () => {
             isOpen={modalVisible}
             onClose={() => handleCloseDetails()}
             size={'xl'}>
-            <Modal.Content height={700}>
+            <Modal.Content height={700} bgColor={Colors.charcoal}>
               <Modal.CloseButton />
-              <Modal.Header>Order Confirmation</Modal.Header>
+              <Modal.Header bgColor={Colors.charcoal}><CustomText color={Colors.grey500}>Order Confirmation</CustomText></Modal.Header>
               <Modal.Body>
                 <ScrollView>
                   <Box marginTop={5} marginLeft={5}>
-                    <CustomText>
+                    <CustomText color={Colors.grey500}>
                       Recipient Name: {firstName} {lastName}
                     </CustomText>
-                    <CustomText>
+                    <CustomText color={Colors.grey500}>
                       Phone No.: {mobile}
                     </CustomText>
-                    <CustomText>
+                    <CustomText color={Colors.grey500}>
                       Email: {email}
                     </CustomText>
-                    <CustomText>
+                    <CustomText color={Colors.grey500}>
                       Address: {address}
                     </CustomText>
-                    <CustomText bold marginTop={4}>
+                    <CustomText bold marginTop={4} marginBottom={1} color={Colors.grey500}>
                       Product Details:-
                     </CustomText>
-                    <Box flexDirection="row" borderBottomWidth={1} padding={2}>
+                    <Box flexDirection="row" borderBottomWidth={1} borderBottomColor={Colors.grey500} padding={2}>
                       <Box flex={2}>
-                        <CustomText bold>Item</CustomText>
+                        <CustomText bold color={Colors.grey500}>Item</CustomText>
                       </Box>
                       <Box flex={1}>
-                        <CustomText bold>Price</CustomText>
+                        <CustomText bold color={Colors.grey500}>Price</CustomText>
                       </Box>
                       <Box flex={1} marginRight={3}>
-                        <CustomText bold>Qty</CustomText>
+                        <CustomText bold color={Colors.grey500}>Qty</CustomText>
                       </Box>
                       <Box flex={1}>
-                        <CustomText bold>Total Price</CustomText>
+                        <CustomText bold color={Colors.grey500}>Total Price</CustomText>
                       </Box>
                     </Box>
                     {cartItems.map(item => (
@@ -104,39 +109,31 @@ const CartScreen = () => {
                         key={item.id}
                         flexDirection="row"
                         borderBottomWidth={1}
+                        borderBottomColor={Colors.grey500}
                         padding={2}>
                         <Box flex={2}>
-                          <CustomText>{item.title}</CustomText>
+                          <CustomText color={Colors.grey500}>{item.title}</CustomText>
                         </Box>
                         <Box flex={1}>
-                          <CustomText>{item.price}</CustomText>
+                          <CustomText color={Colors.grey500}>{item.price}</CustomText>
                         </Box>
                         <Box flex={1}>
-                          <CustomText>{item.quantity}</CustomText>
+                          <CustomText color={Colors.grey500}>{item.quantity}</CustomText>
                         </Box>
                         <Box flex={1}>
-                          <CustomText>{item.price * item.quantity}</CustomText>
+                          <CustomText color={Colors.grey500}>{item.price * item.quantity}</CustomText>
                         </Box>
                       </Box>
                     ))}
                   </Box>
-                  <CustomText bold marginLeft={'25px'} marginTop={5}>
+                  <CustomText bold marginLeft={'25px'} marginTop={5} color={Colors.grey500}>
                     Total Amount: {getTotalAmount()}
                   </CustomText>
                 </ScrollView>
               </Modal.Body>
-              <Modal.Footer>
+              <Modal.Footer bgColor={Colors.charcoal}>
                 <Button.Group>
-                  <Button
-                    variant="ghost"
-                    colorScheme="blueGray"
-                    marginRight={2}
-                    onPress={() => {
-                      handleCloseDetails();
-                    }}>
-                    Cancel
-                  </Button>
-                  <Button onPress={() => handlePlaceOrder()}>
+                  <Button bg={Colors.secondaryGreen} onPress={() => handlePlaceOrder()}>
                     Place Order
                   </Button>
                 </Button.Group>

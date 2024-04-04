@@ -4,6 +4,7 @@ import useProfileController from './controller/useProfileController';
 import CustomText from '../../Components/UI-Kit/CustomText';
 import Colors from '../../Theme/colors';
 import CustomButton from '../../Components/UI-Kit/CustomButton';
+import CustomInput from '../../Components/UI-Kit/CustomInput';
 
 const ProfileScreen = () => {
   const {
@@ -17,7 +18,7 @@ const ProfileScreen = () => {
   } = useProfileController();
 
   return (
-    <VStack>
+    <VStack flex={1} backgroundColor={Colors.backgroundBlack}>
       <CustomText
         bold
         fontSize={'xl'}
@@ -28,7 +29,7 @@ const ProfileScreen = () => {
         User Details:-
       </CustomText>
       <VStack mx={4}>
-        <Input
+        <CustomInput
           type="text"
           placeholder="First Name"
           onChangeText={handleChange('firstName')}
@@ -37,12 +38,12 @@ const ProfileScreen = () => {
           fontFamily={'Poppins-Medium'}
         />
         {touched.firstName && errors.firstName && (
-          <CustomText fontSize={'sm'} color={'red'}>
+          <CustomText fontSize={'sm'} color={Colors.red} marginTop={2}>
             {errors.firstName}
           </CustomText>
         )}
 
-        <Input
+        <CustomInput
           type="text"
           placeholder="Last Name"
           marginTop={8}
@@ -52,12 +53,12 @@ const ProfileScreen = () => {
           fontFamily={'Poppins-Medium'}
         />
         {touched.lastName && errors.lastName && (
-          <CustomText fontSize={'sm'} color={'red'}>
+          <CustomText fontSize={'sm'} color={Colors.red} marginTop={2}>
             {errors.lastName}
           </CustomText>
         )}
 
-        <Input
+        <CustomInput
           type="text"
           marginTop={8}
           isReadOnly
@@ -66,7 +67,7 @@ const ProfileScreen = () => {
           fontFamily={'Poppins-Medium'}
         />
 
-        <Input
+        <CustomInput
           type="number"
           placeholder="Phone No."
           marginTop={8}
@@ -75,12 +76,12 @@ const ProfileScreen = () => {
           value={values.phone}
         />
         {touched.phone && errors.phone && (
-          <CustomText fontSize={'sm'} color={'red'}>
+          <CustomText fontSize={'sm'} color={Colors.red} marginTop={2}>
             {errors.phone}
           </CustomText>
         )}
 
-        <Input
+        <CustomInput
           type="text"
           marginTop={8}
           placeholder="Address"
@@ -89,7 +90,7 @@ const ProfileScreen = () => {
           onBlur={handleBlur('address')}
         />
         {touched.address && errors.address && (
-          <CustomText fontSize={'sm'} color={'red'}>
+          <CustomText fontSize={'sm'} color={Colors.red} marginTop={2}>
             {errors.address}
           </CustomText>
         )}

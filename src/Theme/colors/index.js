@@ -1,15 +1,17 @@
 const Colors = {
-  activeGreen: '#4BC500',
-  red: '#FF0000',
+  activeOrange: '#c98051',
+  red: '#D37676',
   darkYellow: '#F59E0B',
   lightBlue: '#3789D1',
   white: '#FFFFFF',
   black: '#000000',
   gold: '#FDEF8C',
-  green: '#5BDA4D',
-  primaryBlue: '#0056BC',
-  secondaryBlue: '#00AEEF',
+  green: '#A5DC86',
+  primaryBlue: '#76ABAE',
   activeRed: '#990012',
+  backgroundBlack: '#222831',
+  darkTeal: '#447e96',
+  charcoal: '#34495E',
 
   // Grey shades color
   grey200: 'rgba(240, 241, 244, 0.7)',
@@ -20,7 +22,7 @@ const Colors = {
   grey700: '#646B7B',
   grey800: '#858585',
   grey900: '#576170',
-  mattBlack: '#323845',
+  mattBlack: '#31363F',
 
   // Red shade color
   primaryRed: '#FEEEEE',

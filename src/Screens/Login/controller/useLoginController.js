@@ -21,8 +21,8 @@ const useLoginController = () => {
     password: yup
       .string()
       .label('password')
-      .min(6, ({min}) => `Password must be at least ${min} characters`)
-      .max(32, ({max}) => `Password must be at most ${max} characters`)
+      .min(6, ({min}) => `Password must be of at least ${min} characters`)
+      .max(32, ({max}) => `Password must be of at most ${max} characters`)
       .required('Please enter your password'),
   });
 
@@ -51,7 +51,7 @@ const useLoginController = () => {
         handleShowToast({
           status: SNACKBAR_TYPE.success,
           description: 'Login successful!',
-          placement: SNACKBAR_PLACEMENT.topRight
+          placement: SNACKBAR_PLACEMENT.bottomRight
         });
         await saveAccessToken();
         dispatch(setAccessToken(config.ACCESS_TOKEN));

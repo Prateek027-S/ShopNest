@@ -48,6 +48,7 @@ const DrawerNavigation = () => {
                 marginTop: Platform.OS === 'ios' ? -50 : 0,
                 height: '100%',
                 position: 'relative',
+                backgroundColor: colors.charcoal
               }}>
               <DrawerItemList {...filteredProps} />
               <View
@@ -71,7 +72,7 @@ const DrawerNavigation = () => {
                   <LogoutIcon />
                   <Text
                     style={{
-                      color: colors.grey900,
+                      color: colors.primaryBlue,
                       fontSize: 14,
                       fontWeight: '500',
                     }}>
@@ -103,6 +104,7 @@ const DrawerNavigation = () => {
               drawerIcon: item.optionIcon,
               drawerLabelStyle: {
                 marginLeft: -19,
+                color: colors.primaryBlue
               },
               headerShown: item.headerShown,
               header: item.headerShown

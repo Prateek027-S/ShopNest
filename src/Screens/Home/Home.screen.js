@@ -5,13 +5,14 @@ import Colors from '../../Theme/colors';
 import Product from './components/Product/Product';
 import {
   Modal,
-  View,
+  Box,
   FlatList,
   ScrollView,
   Button,
   Image,
   Spinner,
 } from 'native-base';
+import CustomButton from '../../Components/UI-Kit/CustomButton';
 
 const HomeScreen = () => {
   const {
@@ -27,7 +28,7 @@ const HomeScreen = () => {
   console.log('items: ', items);
 
   return (
-    <View>
+    <Box backgroundColor={Colors.backgroundBlack} flex={1}>
       {isFetching ? (
         <Spinner color={Colors.primaryBlue} size={'lg'} marginTop={'50%'} />
       ) : (
@@ -50,7 +51,6 @@ const HomeScreen = () => {
             keyExtractor={item => item.id.toString()}
             numColumns={2}
             contentContainerStyle={{paddingHorizontal: 10}}
-            style={{marginBottom: 60}}
           />
 
           {selectedItem && (
@@ -58,50 +58,48 @@ const HomeScreen = () => {
               isOpen={modalVisible}
               onClose={() => handleCloseDetails()}
               size={'xl'}>
-              <Modal.Content>
+              <Modal.Content bgColor={Colors.charcoal}>
                 <Modal.CloseButton />
-                <Modal.Header>Product Details</Modal.Header>
+                <Modal.Header bgColor={Colors.charcoal}>
+                  <CustomText color={Colors.grey500}>
+                    Product Details
+                  </CustomText>
+                </Modal.Header>
                 <Modal.Body>
                   <ScrollView>
                     <Image
                       source={{uri: selectedItem.images[0]}}
                       alt={selectedItem.title}
-                      style={{
-                        height: 200,
-                        width: '100%',
-                        borderTopLeftRadius: 10,
-                        borderTopRightRadius: 10,
-                        objectFit: 'contain',
-                      }}
+                      height={200}
+                      width={'100%'}
+                      borderTopLeftRadius={10}
+                      borderTopRightRadius={10}
+                      resizeMode={'contain'}
                     />
-                    <CustomText bold marginBottom={'2'} marginTop={'2'}>
+                    <CustomText
+                      bold
+                      marginBottom={'2'}
+                      marginTop={'2'}
+                      color={Colors.grey500}>
                       {selectedItem.title}
                     </CustomText>
-                    <CustomText textAlign={'justify'}>
+                    <CustomText color={Colors.grey500} textAlign={'justify'}>
                       {selectedItem.description}
                     </CustomText>
-                    <CustomText bold marginTop={'2'}>
+                    <CustomText color={Colors.grey500} bold marginTop={'2'}>
                       Price: {selectedItem.price}
                     </CustomText>
                   </ScrollView>
                 </Modal.Body>
-                <Modal.Footer>
+                <Modal.Footer bgColor={Colors.charcoal}>
                   <Button.Group space={2}>
-                    <Button
-                      variant="ghost"
-                      marginRight={'2'}
-                      colorScheme="blueGray"
-                      onPress={() => {
-                        handleCloseDetails();
-                      }}>
-                      Cancel
-                    </Button>
-                    <Button
+                    <CustomButton
+                      width={'40'}
+                      value="Add to Cart"
+                      bg={Colors.secondaryGreen}
                       onPress={() => {
                         addToCart(selectedItem);
-                      }}>
-                      Add to Cart
-                    </Button>
+                      }}></CustomButton>
                   </Button.Group>
                 </Modal.Footer>
               </Modal.Content>
@@ -109,7 +107,7 @@ const HomeScreen = () => {
           )}
         </>
       )}
-    </View>
+    </Box>
   );
 };
 
