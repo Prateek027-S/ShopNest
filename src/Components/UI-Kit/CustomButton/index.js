@@ -37,6 +37,8 @@ const CustomButton = ({
       style={style}
       alignSelf={alignSelf}
       marginTop={marginTop}
+      borderLeftRadius={20}
+      borderRightRadius={20}
       _text={{
         ...textStyle,
         color: textColor

@@ -1,5 +1,5 @@
 const Colors = {
-  activeOrange: '#c98051',
+  activeOrange: '#EA4E25',
   red: '#D37676',
   darkYellow: '#F59E0B',
   lightBlue: '#3789D1',
@@ -9,9 +9,10 @@ const Colors = {
   green: '#A5DC86',
   primaryBlue: '#76ABAE',
   activeRed: '#990012',
-  backgroundBlack: '#222831',
-  darkTeal: '#447e96',
+  backgroundBlack: '#1A2531',
+  secondaryBlack: '#2F3D4E',
   charcoal: '#34495E',
+  lightBronze: '#F3C6A1',
 
   // Grey shades color
   grey200: 'rgba(240, 241, 244, 0.7)',
@@ -29,9 +30,7 @@ const Colors = {
   secondaryRed: '#F25353',
 
   // Green shade color
-  primaryGreen: 'rgba(32, 162, 83, 0.1)',
   secondaryGreen: '#20A253',
-  transparent: 'rgba(0,0,0,0)',
 };
 
 export default Colors;

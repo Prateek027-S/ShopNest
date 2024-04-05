@@ -24,24 +24,23 @@ const CartScreen = () => {
   } = useCartController();
 
   return (
-    <Box flex={1} color={Colors.primaryBlue} backgroundColor={Colors.backgroundBlack}>
+    <Box
+      flex={1}
+      color={Colors.primaryBlue}
+      backgroundColor={Colors.backgroundBlack}>
       {cartItems.length === 0 ? (
-        <CustomText color={Colors.primaryBlue} marginTop={5} marginLeft={5} fontSize={'lg'} marginInline={3}>
+        <CustomText
+          color={Colors.primaryBlue}
+          marginTop={5}
+          marginLeft={5}
+          fontSize={'lg'}
+          marginInline={3}>
           Cart is empty!
         </CustomText>
       ) : (
         <>
-          <CustomText
-            fontSize={'lg'}
-            marginTop={5} marginLeft={5}
-            marginInline={3}
-            color={Colors.primaryBlue}
-            marginBottom={5}>
-            Your Cart:-
-          </CustomText>
-
           <FlatList
-            marginTop={5} 
+            marginTop={5}
             marginLeft={5}
             data={cartItems}
             renderItem={({item}) => (
@@ -56,10 +55,10 @@ const CartScreen = () => {
           />
 
           <CustomButton
-            w={'200'}
-            h={'10'}
-            marginLeft={5}
-            marginBottom={2}
+            w={'50%'}
+            h={'7%'}
+            alignSelf={'center'}
+            marginBottom={4}
             onPress={() => {
               handleProceedForPayment();
             }}
@@ -69,39 +68,67 @@ const CartScreen = () => {
             isOpen={modalVisible}
             onClose={() => handleCloseDetails()}
             size={'xl'}>
-            <Modal.Content height={700} bgColor={Colors.charcoal}>
+            <Modal.Content height={700} bgColor={Colors.backgroundBlack}>
               <Modal.CloseButton />
-              <Modal.Header bgColor={Colors.charcoal}><CustomText color={Colors.grey500}>Order Confirmation</CustomText></Modal.Header>
+              <Modal.Header bgColor={Colors.backgroundBlack}>
+                <CustomText color={Colors.lightBronze}>
+                  Order Confirmation
+                </CustomText>
+              </Modal.Header>
               <Modal.Body>
                 <ScrollView>
-                  <Box marginTop={5} marginLeft={5}>
-                    <CustomText color={Colors.grey500}>
+                  <Box marginTop={5} marginLeft={2}>
+                    <CustomText
+                      color={Colors.grey500}
+                      fontFamily={'Poppins-Regular'}>
                       Recipient Name: {firstName} {lastName}
                     </CustomText>
-                    <CustomText color={Colors.grey500}>
+                    <CustomText
+                      color={Colors.grey500}
+                      fontFamily={'Poppins-Regular'}>
                       Phone No.: {mobile}
                     </CustomText>
-                    <CustomText color={Colors.grey500}>
+                    <CustomText
+                      color={Colors.grey500}
+                      fontFamily={'Poppins-Regular'}>
                       Email: {email}
                     </CustomText>
-                    <CustomText color={Colors.grey500}>
+                    <CustomText
+                      color={Colors.grey500}
+                      fontFamily={'Poppins-Regular'}>
                       Address: {address}
                     </CustomText>
-                    <CustomText bold marginTop={4} marginBottom={1} color={Colors.grey500}>
+                    <CustomText
+                      bold
+                      marginTop={4}
+                      marginBottom={1}
+                      color={Colors.grey500}>
                       Product Details:-
                     </CustomText>
-                    <Box flexDirection="row" borderBottomWidth={1} borderBottomColor={Colors.grey500} padding={2}>
+                    <Box
+                      flexDirection="row"
+                      borderBottomWidth={1}
+                      borderBottomColor={Colors.grey400}
+                      padding={2}>
                       <Box flex={2}>
-                        <CustomText bold color={Colors.grey500}>Item</CustomText>
+                        <CustomText color={Colors.grey500}>
+                          Item
+                        </CustomText>
                       </Box>
                       <Box flex={1}>
-                        <CustomText bold color={Colors.grey500}>Price</CustomText>
+                        <CustomText color={Colors.grey500}>
+                          Price
+                        </CustomText>
                       </Box>
                       <Box flex={1} marginRight={3}>
-                        <CustomText bold color={Colors.grey500}>Qty</CustomText>
+                        <CustomText color={Colors.grey500}>
+                          Qty
+                        </CustomText>
                       </Box>
                       <Box flex={1}>
-                        <CustomText bold color={Colors.grey500}>Total Price</CustomText>
+                        <CustomText color={Colors.grey500}>
+                          Total Price
+                        </CustomText>
                       </Box>
                     </Box>
                     {cartItems.map(item => (
@@ -109,31 +136,44 @@ const CartScreen = () => {
                         key={item.id}
                         flexDirection="row"
                         borderBottomWidth={1}
-                        borderBottomColor={Colors.grey500}
+                        borderBottomColor={Colors.grey400}
                         padding={2}>
                         <Box flex={2}>
-                          <CustomText color={Colors.grey500}>{item.title}</CustomText>
+                          <CustomText color={Colors.grey500}>
+                            {item.title}
+                          </CustomText>
                         </Box>
                         <Box flex={1}>
-                          <CustomText color={Colors.grey500}>{item.price}</CustomText>
+                          <CustomText color={Colors.grey500}>
+                            {item.price}
+                          </CustomText>
                         </Box>
                         <Box flex={1}>
-                          <CustomText color={Colors.grey500}>{item.quantity}</CustomText>
+                          <CustomText color={Colors.grey500}>
+                            {item.quantity}
+                          </CustomText>
                         </Box>
                         <Box flex={1}>
-                          <CustomText color={Colors.grey500}>{item.price * item.quantity}</CustomText>
+                          <CustomText color={Colors.grey500}>
+                            {item.price * item.quantity}
+                          </CustomText>
                         </Box>
                       </Box>
                     ))}
                   </Box>
-                  <CustomText bold marginLeft={'25px'} marginTop={5} color={Colors.grey500}>
-                    Total Amount: {getTotalAmount()}
+                  <CustomText
+                    marginLeft={2}
+                    marginTop={5}
+                    color={Colors.lightBronze}>
+                    Total Amount: ${getTotalAmount()}
                   </CustomText>
                 </ScrollView>
               </Modal.Body>
-              <Modal.Footer bgColor={Colors.charcoal}>
+              <Modal.Footer bgColor={Colors.backgroundBlack}>
                 <Button.Group>
-                  <Button bg={Colors.secondaryGreen} onPress={() => handlePlaceOrder()}>
+                  <Button
+                    bg={Colors.secondaryGreen}
+                    onPress={() => handlePlaceOrder()}>
                     Place Order
                   </Button>
                 </Button.Group>

@@ -9,13 +9,13 @@ import { Box } from 'native-base';
 
 const HomeHeader = ({ colors }) => {
   return (
-    <Box style={styles.root} backgroundColor={colors.charcoal}>
+    <Box style={styles.root} backgroundColor={colors.backgroundBlack}>
       <TouchableOpacity style={styles.iconStyle} onPress={() => navigationRef.dispatch(DrawerActions.toggleDrawer())}>
         <DrawerMenuIcon />
       </TouchableOpacity>
 
       <View style={styles.headingStyle}>
-        <CustomText bold color={colors.white} fontSize={'lg'}>Shoppify</CustomText>
+        <CustomText color={colors.white} fontSize={'lg'}>Discover products</CustomText>
       </View>
 
     </Box>

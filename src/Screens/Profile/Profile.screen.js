@@ -20,12 +20,11 @@ const ProfileScreen = () => {
   return (
     <VStack flex={1} backgroundColor={Colors.backgroundBlack}>
       <CustomText
-        bold
         fontSize={'xl'}
         marginBottom={5}
         marginTop={5}
         marginLeft={15}
-        color={Colors.primaryBlue}>
+        color={Colors.lightBronze}>
         User Details:-
       </CustomText>
       <VStack mx={4}>

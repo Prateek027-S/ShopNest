@@ -48,7 +48,7 @@ const DrawerNavigation = () => {
                 marginTop: Platform.OS === 'ios' ? -50 : 0,
                 height: '100%',
                 position: 'relative',
-                backgroundColor: colors.charcoal
+                backgroundColor: colors.backgroundBlack
               }}>
               <DrawerItemList {...filteredProps} />
               <View
@@ -57,7 +57,7 @@ const DrawerNavigation = () => {
                   position: 'absolute',
                   top: '7%',
                   width: '100%',
-                  borderBottomColor: colors.primaryBlue,
+                  borderBottomColor: colors.lightBronze,
                 }}
               />
               <TouchableOpacity
@@ -72,7 +72,7 @@ const DrawerNavigation = () => {
                   <LogoutIcon />
                   <Text
                     style={{
-                      color: colors.primaryBlue,
+                      color: colors.lightBronze,
                       fontSize: 14,
                       fontWeight: '500',
                     }}>
@@ -104,7 +104,7 @@ const DrawerNavigation = () => {
               drawerIcon: item.optionIcon,
               drawerLabelStyle: {
                 marginLeft: -19,
-                color: colors.primaryBlue
+                color: colors.lightBronze
               },
               headerShown: item.headerShown,
               header: item.headerShown

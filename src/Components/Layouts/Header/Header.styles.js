@@ -11,7 +11,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   iconStyle: {
-    marginTop: isIosDevice ? 50 : 10
+    marginTop: isIosDevice ? 50 : 10,
+    marginLeft: 20
   },
   headingStyle: {
     position: 'absolute',

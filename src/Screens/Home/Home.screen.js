@@ -30,21 +30,12 @@ const HomeScreen = () => {
   return (
     <Box backgroundColor={Colors.backgroundBlack} flex={1}>
       {isFetching ? (
-        <Spinner color={Colors.primaryBlue} size={'lg'} marginTop={'50%'} />
+        <Spinner color={Colors.lightBronze} size={'lg'} marginTop={'50%'} />
       ) : (
         <>
-          <CustomText
-            bold
-            fontSize={'xl'}
-            marginBottom={5}
-            marginTop={5}
-            marginLeft={15}
-            color={Colors.primaryBlue}>
-            Available Products:-
-          </CustomText>
-
           <FlatList
             data={items}
+            marginTop={'3%'}
             renderItem={({item}) => (
               <Product item={item} handleItemClick={handleItemClick} />
             )}

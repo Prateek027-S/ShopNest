@@ -15,46 +15,52 @@ const OrderHistoryScreen = () => {
         </CustomText>
       ) : (
         <ScrollView>
-          <CustomText fontSize={'lg'} margin={3} color={Colors.primaryBlue}>
-            Your past orders:-
-          </CustomText>
           {orderHistory.map((order, index) => (
-            <VStack margin={3} key={index} backgroundColor={Colors.primaryBlue}>
-              <Box width={'100%'} backgroundColor={Colors.darkTeal}>
-                <CustomText padding={2} color={'white'}>
-                  Order {index + 1} - {order.time}
+            <VStack
+              margin={3}
+              key={index}
+              backgroundColor={Colors.secondaryBlack}
+              borderTopLeftRadius={10}
+              borderTopRightRadius={10}
+              borderBottomLeftRadius={10}
+              borderBottomRightRadius={10}>
+              <HStack width={'100%'} paddingTop={4} paddingLeft={6}>
+                <CustomText bold color={Colors.lightBronze}>
+                  Order{index + 1}:
                 </CustomText>
-              </Box>
-                <Box marginTop={5} marginLeft={5}>
-                  <Box flexDirection="row" borderBottomWidth={1} padding={2}>
+                <CustomText  bold marginLeft={4} color={Colors.lightBronze}>{order.time}</CustomText>
+              </HStack>
+              <Box marginTop={5} alignItems={'center'} paddingX={3}>
+                <Box flexDirection="row" borderBottomWidth={1} borderBottomColor={Colors.grey400} padding={2}>
+                  <Box flex={2}>
+                    <CustomText color={Colors.grey500}>Item</CustomText>
+                  </Box>
+                  <Box flex={1}>
+                    <CustomText bold color={Colors.grey500}>Price</CustomText>
+                  </Box>
+                  <Box flex={1} marginRight={3}>
+                    <CustomText bold color={Colors.grey500}>Quantity</CustomText>
+                  </Box>
+                </Box>
+                {order.items.map((item, i) => (
+                  <Box
+                    key={i}
+                    flexDirection="row"
+                    borderBottomWidth={1}
+                    borderBottomColor={Colors.grey400}
+                    padding={2}>
                     <Box flex={2}>
-                      <CustomText bold>Item</CustomText>
+                      <CustomText color={Colors.grey500}>{item.title}</CustomText>
                     </Box>
                     <Box flex={1}>
-                      <CustomText bold>Price</CustomText>
+                      <CustomText color={Colors.grey500}>{item.price}</CustomText>
                     </Box>
-                    <Box flex={1} marginRight={3}>
-                      <CustomText bold>Quantity</CustomText>
+                    <Box flex={1}>
+                      <CustomText color={Colors.grey500}>{item.quantity}</CustomText>
                     </Box>
                   </Box>
-                  {order.items.map((item, i) => (
-                    <Box
-                      key={i}
-                      flexDirection="row"
-                      borderBottomWidth={1}
-                      padding={2}>
-                      <Box flex={2}>
-                        <CustomText>{item.title}</CustomText>
-                      </Box>
-                      <Box flex={1}>
-                        <CustomText>{item.price}</CustomText>
-                      </Box>
-                      <Box flex={1}>
-                        <CustomText>{item.quantity}</CustomText>
-                      </Box>
-                    </Box>
-                  ))}
-                </Box>
+                ))}
+              </Box>
             </VStack>
           ))}
         </ScrollView>

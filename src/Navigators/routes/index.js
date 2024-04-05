@@ -39,17 +39,17 @@ export const applicationTabRoutes = [
     activeIcon: CartActiveIcon,
     inActiveIcon: CartIcon,
     headerShown: true,
-    header: () => <Header variant='default' headerHeading='Cart' />
+    header: () => <Header variant='default' headerHeading='My Cart' />
   },
   {
     label: SCREEN_NAMES.orderHistory,
-    tabLabel: 'Order History',
+    tabLabel: 'Past Orders',
     routeName: SCREEN_NAMES.orderHistory,
     component: OrderHistoryScreen,
     activeIcon: HistoryActiveIcon,
     inActiveIcon: HistoryIcon,
     headerShown: true,
-    header: () => <Header variant='default' headerHeading='Order History' />
+    header: () => <Header variant='default' headerHeading='Past Orders' />
   }
 ]
 

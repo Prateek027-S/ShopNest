@@ -1,4 +1,4 @@
-import { Pressable, Image, View } from 'native-base';
+import {Pressable, Image, Box, VStack} from 'native-base';
 import CustomText from '../../../../Components/UI-Kit/CustomText';
 import Colors from '../../../../Theme/colors';
 
@@ -6,26 +6,40 @@ const Product = ({item, handleItemClick}) => {
   return (
     <Pressable
       width={'48%'}
+      flex={1}
       marginBottom={4}
-      borderRadius={10}
-      backgroundColor={Colors.darkTeal}
+      rounded={10}
+      backgroundColor={Colors.secondaryBlack}
       shadow={5}
-      marginLeft={1}
+      marginLeft={2}
       marginRight={2}
       onPress={() => handleItemClick(item)}>
-      <Image
-        source={{uri: item.images[0]}}
-        alt={item.title}
-        height={'200'}
-        width={'95%'}
-        borderRadius={20}
-        resizeMode='contain'
-        alignSelf={'center'}
-      />
-      <View style={{padding: 10}}>
-        <CustomText bold fontSize={'lg'} marginBottom={2}>{item.title}</CustomText>
-        <CustomText fontSize={'md'} marginTop={5}>Price: {item.price}</CustomText>
-      </View>
+      <VStack flex={1} justifyContent={'flex-start'}>
+        <Box height={200} width={'100%'}>
+          <Image
+            source={{uri: item.images[0]}}
+            alt={item.title}
+            flex={1}
+            width={'100%'}
+            height={200}
+            resizeMode="stretch"
+            borderTopLeftRadius={10}
+            borderTopRightRadius={10}
+            borderBottomLeftRadius={20}
+            borderBottomRightRadius={20}
+          />
+        </Box>
+        <CustomText fontSize={'lg'} padding={3} color={Colors.white}>
+          {item.title}
+        </CustomText>
+        <CustomText
+          fontSize={'md'}
+          paddingLeft={3}
+          paddingBottom={3}
+          color={Colors.lightBronze}>
+          Price: ${item.price}
+        </CustomText>
+      </VStack>
     </Pressable>
   );
 };

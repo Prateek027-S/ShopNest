@@ -11,13 +11,13 @@ const DefaultHeader = ({ heading }) => {
 
   return (
     <>
-      <View style={styles.root} backgroundColor={colors.charcoal}>
+      <View style={styles.root} backgroundColor={colors.backgroundBlack}>
         <TouchableOpacity style={{ ...styles.iconStyle, marginLeft: 5 }} onPress={() => navigationRef.goBack()}>
           <BackArrowIcon />
         </TouchableOpacity>
 
         <View style={styles.headingStyle}>
-          <CustomText style={{ color: colors.white, fontWeight: 'bold', fontSize: 18 }}>{heading}</CustomText>
+          <CustomText style={{ color: colors.white, fontSize: 18 }}>{heading}</CustomText>
         </View>
       </View>
     </>

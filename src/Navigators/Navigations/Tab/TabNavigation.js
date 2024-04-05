@@ -61,7 +61,7 @@ const TabNavigation = () => {
           bottom: 0,
           right: 0,
           left: 0,
-          backgroundColor: Colors.charcoal
+          backgroundColor: Colors.backgroundBlack
         }
       }}
       sceneContainerStyle={{
