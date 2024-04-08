@@ -44,15 +44,15 @@ const HomeScreen = () => {
             contentContainerStyle={{paddingHorizontal: 10}}
           />
 
-          {selectedItem && (
+          {/* {selectedItem && (
             <Modal
               isOpen={modalVisible}
               onClose={() => handleCloseDetails()}
               size={'xl'}>
-              <Modal.Content bgColor={Colors.charcoal}>
+              <Modal.Content bgColor={Colors.secondaryBlack}>
                 <Modal.CloseButton />
-                <Modal.Header bgColor={Colors.charcoal}>
-                  <CustomText color={Colors.grey500}>
+                <Modal.Header bgColor={Colors.secondaryBlack}>
+                  <CustomText color={Colors.lightBronze}>
                     Product Details
                   </CustomText>
                 </Modal.Header>
@@ -82,7 +82,7 @@ const HomeScreen = () => {
                     </CustomText>
                   </ScrollView>
                 </Modal.Body>
-                <Modal.Footer bgColor={Colors.charcoal}>
+                <Modal.Footer bgColor={Colors.secondaryBlack}>
                   <Button.Group space={2}>
                     <CustomButton
                       width={'40'}
@@ -95,7 +95,7 @@ const HomeScreen = () => {
                 </Modal.Footer>
               </Modal.Content>
             </Modal>
-          )}
+          )} */}
         </>
       )}
     </Box>

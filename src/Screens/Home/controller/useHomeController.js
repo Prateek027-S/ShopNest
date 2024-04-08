@@ -3,7 +3,8 @@ import {useLazyGetProductsQuery} from '../../../Network/services/products';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCartItems } from '../../../Store/redux/cart/cart.slice';
 import { handleShowToast } from '../../../Utils/helpers/toast.helpers';
-import { SNACKBAR_PLACEMENT, SNACKBAR_TYPE } from '../../../Utils/constants';
+import { SCREEN_NAMES, SNACKBAR_PLACEMENT, SNACKBAR_TYPE } from '../../../Utils/constants';
+import { navigate } from '../../../Navigators/utils';
 
 const useHomeController = () => {
   const [items, setItems] = useState([]);
@@ -25,7 +26,7 @@ const useHomeController = () => {
 
   const handleItemClick = (item) => {
     setSelectedItem(item);
-    setModalVisible(true);
+    navigate(SCREEN_NAMES.productDetails, {selectedItem: item});
   };
 
   const handleCloseDetails = () => {

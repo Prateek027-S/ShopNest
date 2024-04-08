@@ -12,6 +12,7 @@ import HistoryIcon from "../../Components/UI-Kit/Icons/iconComponents/HistoryIco
 import HistoryActiveIcon from "../../Components/UI-Kit/Icons/iconComponents/HistoryActiveIcon";
 import UserIcon from "../../Components/UI-Kit/Icons/iconComponents/UserIcon";
 import Header from "../../Components/Layouts/Header";
+import ProductDetails from "../../Screens/ProductDetails/ProductDetails.screen";
 
 export const notAuthenticatedRoutes = [
   {
@@ -19,6 +20,16 @@ export const notAuthenticatedRoutes = [
     component: LoginScreen,
   },
 ];
+
+export const authenticatedStackNavigationRoutes = [
+  {
+    label: SCREEN_NAMES.productDetails,
+    headerShown: true,
+    header: () => <Header variant="default" headerHeading='Product Details' />,
+    routeName: SCREEN_NAMES.productDetails,
+    component: ProductDetails
+  },
+]
 
 export const applicationTabRoutes = [
   {

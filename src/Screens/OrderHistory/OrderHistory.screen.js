@@ -8,7 +8,7 @@ const OrderHistoryScreen = () => {
   const {orderHistory} = useOrderHistoryController();
 
   return (
-    <VStack backgroundColor={Colors.backgroundBlack}>
+    <VStack flex={1} backgroundColor={Colors.backgroundBlack}>
       {orderHistory.length === 0 ? (
         <CustomText fontSize={'lg'} margin={3} color={Colors.primaryBlue}>
           No orders found!!

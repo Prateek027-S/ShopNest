@@ -1,4 +1,4 @@
-import { VStack, Input, HStack } from 'native-base';
+import { VStack, Input, HStack, ScrollView } from 'native-base';
 import React from 'react'
 import useProfileController from './controller/useProfileController';
 import CustomText from '../../Components/UI-Kit/CustomText';
@@ -19,6 +19,7 @@ const ProfileScreen = () => {
 
   return (
     <VStack flex={1} backgroundColor={Colors.backgroundBlack}>
+      <ScrollView flex={1}>
       <CustomText
         fontSize={'lg'}
         marginBottom={5}
@@ -101,6 +102,7 @@ const ProfileScreen = () => {
         value="Save"
         onPress={handleSubmit}
       />
+      </ScrollView>
     </VStack>
   );
 }

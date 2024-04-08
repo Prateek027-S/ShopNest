@@ -7,6 +7,7 @@ export const SCREEN_NAMES = {
   home: 'Home',
   login: 'Login',
   profile: 'Profile',
+  productDetails: 'Product Details',
   orderHistory: 'Order History',
   cart: 'Cart'
 }
