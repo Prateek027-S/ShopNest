@@ -1,30 +1,19 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import { SCREEN_NAMES } from '../../../Utils/constants'
 import * as Animatable from 'react-native-animatable'
 import { applicationTabRoutes } from '../../routes'
-import { Platform, StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { Platform, StyleSheet, TouchableOpacity } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Header from '../../../Components/Layouts/Header'
 import Colors from '../../../Theme/colors'
-import CustomText from '../../../Components/UI-Kit/CustomText'
 
 const Tab = createBottomTabNavigator()
 
-const animate1 = { 0: { scale: 0.5, translateY: 0 }, 0.50: { translateY: -10 }, 1: { scale: 1, translateY: -10 } }
-const animate2 = { 0: { scale: 1, translateY: -10 }, 1: { scale: 1, translateY: 0 } }
 
 const TabButton = (props) => {
   const { item, onPress, accessibilityState } = props
   const focused = accessibilityState.selected
   const viewRef = useRef(null)
-
-  useEffect(() => {
-    if (focused) {
-      viewRef.current.animate(animate1)
-    } else {
-      viewRef.current.animate(animate2)
-    }
-  }, [focused])
 
   return (
     <TouchableOpacity
@@ -41,7 +30,6 @@ const TabButton = (props) => {
           focused ? <item.activeIcon /> : <item.inActiveIcon />
         }
       </Animatable.View>
-      <CustomText fontSize={'sm'} marginTop={1} color={Colors.white}>{item.tabLabel}</CustomText>
     </TouchableOpacity>
   )
 }
@@ -61,11 +49,14 @@ const TabNavigation = () => {
           bottom: 0,
           right: 0,
           left: 0,
-          backgroundColor: Colors.backgroundBlack
+          backgroundColor: Colors.backgroundBlack,
+        },
+        tabBarLabelStyle: {
+          margin: 0
         }
       }}
       sceneContainerStyle={{
-        paddingBottom: '20%'
+        paddingBottom: '0'
       }}
     >
       {
