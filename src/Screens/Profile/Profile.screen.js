@@ -20,7 +20,7 @@ const ProfileScreen = () => {
   return (
     <VStack flex={1} backgroundColor={Colors.backgroundBlack}>
       <CustomText
-        fontSize={'xl'}
+        fontSize={'lg'}
         marginBottom={5}
         marginTop={5}
         marginLeft={15}

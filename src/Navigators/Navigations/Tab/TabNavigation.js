@@ -19,7 +19,7 @@ const TabButton = (props) => {
     <TouchableOpacity
       onPress={onPress}
       activeOpacity={1}
-      style={{ ...styles.container, paddingBottom: '3%' }}
+      style={styles.container }
     >
       <Animatable.View
         ref={viewRef}
@@ -56,7 +56,7 @@ const TabNavigation = () => {
         }
       }}
       sceneContainerStyle={{
-        paddingBottom: '0'
+        paddingBottom: '14%'
       }}
     >
       {

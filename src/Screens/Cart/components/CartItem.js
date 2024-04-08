@@ -65,6 +65,7 @@ const CartItem = ({item, updateQuantity, onRemoveBtnClick}) => {
         <Pressable
           paddingTop={2}
           marginLeft={'10%'}
+          marginBottom={'10%'}
           onPress={() => onRemoveBtnClick(item.id)}>
           <CrossIcon />
         </Pressable>

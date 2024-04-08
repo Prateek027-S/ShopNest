@@ -30,7 +30,7 @@ const CartScreen = () => {
       backgroundColor={Colors.backgroundBlack}>
       {cartItems.length === 0 ? (
         <CustomText
-          color={Colors.primaryBlue}
+          color={Colors.lightBronze}
           marginTop={5}
           marginLeft={5}
           fontSize={'lg'}
