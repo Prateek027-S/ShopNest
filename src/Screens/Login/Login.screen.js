@@ -15,6 +15,9 @@ import CrossedEyeIcon from '../../Components/UI-Kit/Icons/iconComponents/Crossed
 import CustomText from '../../Components/UI-Kit/CustomText';
 import Colors from '../../Theme/colors';
 import CustomInput from '../../Components/UI-Kit/CustomInput';
+import { ImageBackground } from 'react-native';
+import { styles } from './styles';
+import backgroundImg from '../../Assets/Images/landingPage.png';
 
 const LoginScreen = () => {
   const {
@@ -29,7 +32,7 @@ const LoginScreen = () => {
   } = useLoginController();
 
   return (
-    <Box flex={1} backgroundColor={Colors.backgroundBlack}>
+    <ImageBackground style={styles.container} source={backgroundImg}>
       <ScrollView flex={1}>
         <CustomText
           fontSize={'2xl'}
@@ -47,7 +50,7 @@ const LoginScreen = () => {
               rounded="lg"
               overflow="hidden"
               borderRadius={'20'}
-              backgroundColor={Colors.secondaryBlack}>
+              backgroundColor={Colors.grey300}>
               <Stack p="4" space={3}>
                 <Heading
                   size="xl"
@@ -122,7 +125,7 @@ const LoginScreen = () => {
           </Box>
         </Center>
       </ScrollView>
-    </Box>
+    </ImageBackground>
   );
 };
 

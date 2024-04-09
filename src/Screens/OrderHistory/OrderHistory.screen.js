@@ -10,7 +10,7 @@ const OrderHistoryScreen = () => {
   return (
     <VStack flex={1} backgroundColor={Colors.backgroundBlack}>
       {orderHistory.length === 0 ? (
-        <CustomText fontSize={'lg'} margin={3} color={Colors.primaryBlue}>
+        <CustomText fontSize={'lg'} margin={3} color={Colors.lightBronze}>
           No orders found!!
         </CustomText>
       ) : (
