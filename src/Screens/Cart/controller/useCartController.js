@@ -97,6 +97,7 @@ const useCartController = () => {
       description: 'Order Placed!',
       placement: SNACKBAR_PLACEMENT.top,
     });
+    navigate(SCREEN_NAMES.orderHistory);
   };
 
   return {

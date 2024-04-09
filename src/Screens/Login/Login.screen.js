@@ -40,7 +40,7 @@ const LoginScreen = () => {
           alignSelf={'center'}
           marginTop={'20'}
           fontFamily={'Poppins-Bold'}>
-          Shoppify
+          ShopNest
         </CustomText>
         <Center flex={1} marginTop={'20%'}>
           <Box alignItems="center">

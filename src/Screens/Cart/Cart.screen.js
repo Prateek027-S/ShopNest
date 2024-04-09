@@ -111,19 +111,13 @@ const CartScreen = () => {
                       borderBottomColor={Colors.grey400}
                       padding={2}>
                       <Box flex={2}>
-                        <CustomText color={Colors.grey500}>
-                          Item
-                        </CustomText>
+                        <CustomText color={Colors.grey500}>Item</CustomText>
                       </Box>
                       <Box flex={1}>
-                        <CustomText color={Colors.grey500}>
-                          Price
-                        </CustomText>
+                        <CustomText color={Colors.grey500}>Price</CustomText>
                       </Box>
                       <Box flex={1} marginRight={3}>
-                        <CustomText color={Colors.grey500}>
-                          Qty
-                        </CustomText>
+                        <CustomText color={Colors.grey500}>Qty</CustomText>
                       </Box>
                       <Box flex={1}>
                         <CustomText color={Colors.grey500}>
@@ -170,13 +164,13 @@ const CartScreen = () => {
                 </ScrollView>
               </Modal.Body>
               <Modal.Footer bgColor={Colors.backgroundBlack}>
-                <Button.Group>
-                  <Button
-                    bg={Colors.secondaryGreen}
-                    onPress={() => handlePlaceOrder()}>
-                    Place Order
-                  </Button>
-                </Button.Group>
+                <Button
+                  bg={Colors.secondaryGreen}
+                  borderTopRadius={15}
+                  borderBottomRadius={15}
+                  onPress={() => handlePlaceOrder()}>
+                  Place Order
+                </Button>
               </Modal.Footer>
             </Modal.Content>
           </Modal>

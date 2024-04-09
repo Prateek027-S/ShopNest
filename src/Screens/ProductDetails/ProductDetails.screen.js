@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   VStack,
-  ZStack,
   HStack,
   ScrollView,
   Image,
@@ -23,20 +22,20 @@ const ProductDetails = () => {
         <Image
           source={{uri: selectedItem.images[0]}}
           alt={selectedItem.title}
-          flex={1}
           width={'100%'}
           height={400}
           resizeMode="stretch"
-          borderTopLeftRadius={10}
-          borderTopRightRadius={10}
+          borderTopLeftRadius={20}
+          borderTopRightRadius={20}
         />
-        <ZStack
-          height={700}
+        <VStack
+          flex={1}
           marginTop={-4}
+          paddingRight={2}
           backgroundColor={Colors.backgroundBlack}
           borderTopLeftRadius={20}
           borderTopRightRadius={20}>
-          <VStack marginLeft={15} marginTop={4}>
+          <VStack marginLeft={15} marginTop={7}>
             <CustomText color={Colors.lightBronze} fontSize={'2xl'}>
               {selectedItem.title}
             </CustomText>
@@ -57,7 +56,7 @@ const ProductDetails = () => {
                 {selectedItem.rating}
               </CustomText>
             </HStack>
-            <CustomText marginTop={4} marginRight={3} color={Colors.grey500}>
+            <CustomText marginTop={4} marginRight={3} color={Colors.grey500} textAlign={'justify'}>
               {selectedItem.description}
             </CustomText>
             <Divider marginTop={4} bgColor={Colors.grey400} />
@@ -77,7 +76,7 @@ const ProductDetails = () => {
               />
             </HStack>
           </VStack>
-        </ZStack>
+        </VStack>
       </ScrollView>
     </VStack>
   );
