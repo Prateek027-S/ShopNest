@@ -5,17 +5,28 @@ import { navigate } from '../../../Navigators/utils';
 
 const useHomeController = () => {
   const [items, setItems] = useState([]);
+  const [skip, setSkip] = useState(0)
 
-  const [fetchProducts, {isFetching}] = useLazyGetProductsQuery();
+  const [fetchProducts, {isFetching, isLoading}] = useLazyGetProductsQuery();
 
   const getData = async () => {
-    const {data} = await fetchProducts();
+    const {data} = await fetchProducts({skip: skip});
     setItems(data.products);
   };
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [skip]);
+
+  const fetchMoreData = () => {
+    setSkip(skip+10)
+  }
+
+  const fetchPreviousData = () => {
+    if(skip >= 10) {
+      setSkip(skip-10)
+    }
+  }
 
   const handleItemClick = (item) => {
     navigate(SCREEN_NAMES.productDetails, {selectedItem: item});
@@ -24,7 +35,10 @@ const useHomeController = () => {
   return {
     items,
     isFetching,
-    handleItemClick,
+    isLoading,
+    fetchMoreData,
+    fetchPreviousData,
+    handleItemClick
   };
 };
 

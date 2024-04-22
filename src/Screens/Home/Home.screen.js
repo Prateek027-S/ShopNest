@@ -13,14 +13,23 @@ const HomeScreen = () => {
   const {
     items,
     isFetching,
+    isLoading,
+    fetchMoreData,
+    fetchPreviousData,
     handleItemClick,
   } = useHomeController();
 
   console.log('items: ', items);
 
+  const renderFooter = () => {
+    return (
+      isFetching && (<Spinner marginBottom={4} color={Colors.lightBronze} size={'sm'} />)
+    )
+  }
+
   return (
     <Box backgroundColor={Colors.backgroundBlack} flex={1}>
-      {isFetching ? (
+      {isLoading ? (
         <Spinner color={Colors.lightBronze} size={'lg'} marginTop={'50%'} />
       ) : (
         <>
@@ -33,6 +42,11 @@ const HomeScreen = () => {
             keyExtractor={item => item.id.toString()}
             numColumns={2}
             contentContainerStyle={{paddingHorizontal: 10}}
+            onEndReachedThreshold={0.5}
+            onEndReached={fetchMoreData}
+            onStartReached={fetchPreviousData}
+            onStartReachedThreshold={0.2}
+            //ListFooterComponent={renderFooter}
           />
         </>
       )}
