@@ -11,7 +11,7 @@ const useHomeController = () => {
 
   const getData = async () => {
     const {data} = await fetchProducts({skip: skip});
-    setItems(data.products);
+    setItems(prevItems => [...prevItems, ...data.products]);
   };
 
   useEffect(() => {
@@ -20,12 +20,6 @@ const useHomeController = () => {
 
   const fetchMoreData = () => {
     setSkip(skip+10)
-  }
-
-  const fetchPreviousData = () => {
-    if(skip >= 10) {
-      setSkip(skip-10)
-    }
   }
 
   const handleItemClick = (item) => {
@@ -37,7 +31,6 @@ const useHomeController = () => {
     isFetching,
     isLoading,
     fetchMoreData,
-    fetchPreviousData,
     handleItemClick
   };
 };

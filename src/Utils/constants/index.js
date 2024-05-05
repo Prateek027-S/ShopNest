@@ -28,5 +28,5 @@ export const SNACKBAR_PLACEMENT = {
   bottomRight: 'bottom-right'
 }
 
-export const PHONE_REG_EXP = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+export const PHONE_REG_EXP = /^(?:\+91|0)?[6789]\d{9}$/ /* /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/ */
 export const CHAR_ONLY_REG_EXP = /^[A-Za-z ]*$/

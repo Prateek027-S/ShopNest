@@ -1,4 +1,3 @@
-import CustomText from '../../Components/UI-Kit/CustomText';
 import React from 'react';
 import useHomeController from './controller/useHomeController';
 import Colors from '../../Theme/colors';
@@ -15,7 +14,6 @@ const HomeScreen = () => {
     isFetching,
     isLoading,
     fetchMoreData,
-    fetchPreviousData,
     handleItemClick,
   } = useHomeController();
 
@@ -42,11 +40,9 @@ const HomeScreen = () => {
             keyExtractor={item => item.id.toString()}
             numColumns={2}
             contentContainerStyle={{paddingHorizontal: 10}}
-            onEndReachedThreshold={0.5}
+            onEndReachedThreshold={0.3}
             onEndReached={fetchMoreData}
-            onStartReached={fetchPreviousData}
-            onStartReachedThreshold={0.2}
-            //ListFooterComponent={renderFooter}
+            ListFooterComponent={renderFooter}
           />
         </>
       )}

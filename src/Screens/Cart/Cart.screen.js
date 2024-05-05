@@ -41,7 +41,8 @@ const CartScreen = () => {
         <>
           <FlatList
             marginTop={5}
-            marginLeft={5}
+            /* marginLeft={5} */
+            alignSelf={'center'}
             data={cartItems}
             renderItem={({item}) => (
               <CartItem
